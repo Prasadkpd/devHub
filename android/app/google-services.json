@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "748290765008",
+    "project_id": "devhub-d486f",
+    "storage_bucket": "devhub-d486f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:748290765008:android:4b48441e408269fa526ed5",
+        "android_client_info": {
+          "package_name": "com.prasadkpd.devhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "748290765008-es588v2icbkl2q6plc5dpfcgfteu655g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIafsPcS9eMauIuH12U9YjER2nL3HQyXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "748290765008-es588v2icbkl2q6plc5dpfcgfteu655g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
