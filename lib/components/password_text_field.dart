@@ -105,7 +105,7 @@ class _PasswordFormBuilderState extends State<PasswordFormBuilder> {
                       setState(() => obscureText = !obscureText);
                     },
                     child: Icon(
-                      obscureText ? widget.suffix : Icons.visibility_off_outlined,
+                      obscureText ? widget.suffix : Icons.remove_red_eye_outlined,
                       size: 15.0,
                       color: Theme.of(context).colorScheme.secondary,
                     ),
@@ -121,20 +121,6 @@ class _PasswordFormBuilderState extends State<PasswordFormBuilder> {
                   enabledBorder: border(context),
                   focusedBorder: focusBorder(context),
                   errorStyle: const TextStyle(height: 0.0, fontSize: 0.0),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 5.0),
-          Visibility(
-            visible: error != null,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                '$error',
-                style: TextStyle(
-                  color: Colors.red[700],
-                  fontSize: 12.0,
                 ),
               ),
             ),

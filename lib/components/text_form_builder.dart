@@ -123,20 +123,6 @@ class _TextFormBuilderState extends State<TextFormBuilder> {
               ),
             ),
           ),
-          const SizedBox(height: 5.0),
-          Visibility(
-            visible: error != null,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 10.0),
-              child: Text(
-                '$error',
-                style: TextStyle(
-                  color: Colors.red[700],
-                  fontSize: 12.0,
-                ),
-              ),
-            ),
-          ),
         ],
       ),
     );

@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devhub/utils/firebase.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 
 class AuthService {
+  
   User getCurrentUser() {
     User user = firebaseAuth.currentUser!;
     return user;
@@ -13,14 +13,15 @@ class AuthService {
       {String? name,
       User? user,
       String? email,
-      String? country,
-      String? password}) async {
+      String country = "Sri Lanka",
+      String? password,
+      String? jobRole}) async {
     var res = await firebaseAuth.createUserWithEmailAndPassword(
       email: '$email',
       password: '$password',
     );
     if (res.user != null) {
-      await saveUserToFirestore(name!, res.user!, email!, country!);
+      await saveUserToFirestore(name!, res.user!, email!, country!, jobRole!);
       return true;
     } else {
       return false;
@@ -28,13 +29,13 @@ class AuthService {
   }
 
   saveUserToFirestore(
-      String name, User user, String email, String country) async {
+      String name, User user, String email, String country, String jobRole) async {
     await userRef.doc(user.uid).set({
       'username': name,
       'email': email,
       'time': Timestamp.now(),
       'id': user.uid,
-      'bio': "",
+      'role': jobRole,
       'country': country,
       'photoUrl': user.photoURL ?? '',
       'gender': '',

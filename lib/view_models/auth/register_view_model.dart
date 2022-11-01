@@ -8,10 +8,10 @@ class RegisterViewModel extends ChangeNotifier {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   bool validate = false;
   bool loading = false;
-  String? username, email, country, password, cPassword;
+  String? username, email, jobRole, password, cPassword;
   FocusNode usernameFN = FocusNode();
   FocusNode emailFN = FocusNode();
-  FocusNode countryFN = FocusNode();
+  FocusNode jobRoleFN = FocusNode();
   FocusNode passFN = FocusNode();
   FocusNode cPassFN = FocusNode();
   AuthService authService = AuthService();
@@ -31,11 +31,10 @@ class RegisterViewModel extends ChangeNotifier {
         notifyListeners();
         try {
           bool success = await authService.createUser(
-            name: username,
-            email: email,
-            password: password,
-            country: country,
-          );
+              name: username,
+              email: email,
+              password: password,
+              jobRole: jobRole);
           print(success);
           // if (success) {
           //   Navigator.of(context).pushReplacement(
@@ -74,13 +73,13 @@ class RegisterViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  setConfirmPass(val) {
-    cPassword = val;
+  setJobRole(value) {
+    jobRole = value;
     notifyListeners();
   }
 
-  setCountry(val) {
-    country = val;
+  setConfirmPass(val) {
+    cPassword = val;
     notifyListeners();
   }
 

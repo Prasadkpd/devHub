@@ -27,7 +27,7 @@ class _RegisterState extends State<Register> {
       child: Scaffold(
         key: viewModel.scaffoldKey,
         body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
           children: [
             SizedBox(height: MediaQuery.of(context).size.height / 10),
             Text(
@@ -100,26 +100,26 @@ class _RegisterState extends State<Register> {
               viewModel.setEmail(val);
             },
             focusNode: viewModel.emailFN,
-            nextFocusNode: viewModel.countryFN,
+            nextFocusNode: viewModel.jobRoleFN,
           ),
           const SizedBox(height: 20.0),
           TextFormBuilder(
             enabled: !viewModel.loading,
             prefix: Icons.person_pin_circle_outlined,
-            hintText: "Country",
+            hintText: "Job Role",
             textInputAction: TextInputAction.next,
-            validateFunction: Validations.validateName,
+            validateFunction: Validations.validateJobRole,
             onSaved: (String val) {
-              viewModel.setCountry(val);
+              viewModel.setJobRole(val);
             },
-            focusNode: viewModel.countryFN,
+            focusNode: viewModel.jobRoleFN,
             nextFocusNode: viewModel.passFN,
           ),
           const SizedBox(height: 20.0),
           PasswordFormBuilder(
             enabled: !viewModel.loading,
             prefix: Icons.lock_outline,
-            suffix: Icons.remove_red_eye_outlined,
+            suffix: Icons.visibility_off_outlined,
             hintText: "Password",
             textInputAction: TextInputAction.next,
             validateFunction: Validations.validatePassword,

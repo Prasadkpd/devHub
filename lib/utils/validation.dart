@@ -24,4 +24,15 @@ class Validations {
     }
     return null;
   }
+
+  static String? validateJobRole(String? value) {
+    if (value!.isEmpty) {
+      return "Job Role is required.";
+    }
+    final RegExp nameExp = RegExp(r'^[A-za-zğüşöçİĞÜŞÖÇ ]+$');
+    if (!nameExp.hasMatch(value)) {
+      return "Please enter only alphabetical characters.";
+    }
+    return null;
+  }
 }
