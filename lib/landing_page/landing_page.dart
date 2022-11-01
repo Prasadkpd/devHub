@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../auth/login/login.dart';
 
 class Landing extends StatefulWidget {
@@ -53,7 +52,7 @@ class _LandingState extends State<Landing> {
                     );
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(vertical:15.0),
+                    margin: const EdgeInsets.only(top:25.0, bottom: 15.0),
                     height: 45.0,
                     width: 250.0,
                     decoration: BoxDecoration(
