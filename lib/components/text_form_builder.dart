@@ -8,7 +8,7 @@ import 'package:devhub/components/custom_card.dart';
 class TextFormBuilder extends StatefulWidget {
   final String? initialValue;
   final bool? enabled;
-  final String? hindText;
+  final String? hintText;
   final TextInputType? textInputType;
   final TextEditingController? controller;
   final TextInputAction? textInputAction;
@@ -26,7 +26,7 @@ class TextFormBuilder extends StatefulWidget {
       this.suffix,
       this.initialValue,
       this.enabled,
-      this.hindText,
+      this.hintText,
       this.textInputType,
       this.controller,
       this.textInputAction,
@@ -37,7 +37,7 @@ class TextFormBuilder extends StatefulWidget {
       this.validateFunction,
       this.onSaved,
       this.onChange,
-      this.key, required String hintText});
+      this.key});
 
   @override
   State<TextFormBuilder> createState() => _TextFormBuilderState();
@@ -109,7 +109,7 @@ class _TextFormBuilderState extends State<TextFormBuilder> {
                       color: Theme.of(context).colorScheme.secondary,
                     ),
                     filled: true,
-                    hintText: widget.hindText,
+                    hintText: widget.hintText,
                     hintStyle: TextStyle(
                       color: Colors.grey[400],
                     ),

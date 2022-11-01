@@ -37,13 +37,13 @@ class RegisterViewModel extends ChangeNotifier {
             country: country,
           );
           print(success);
-          if (success) {
-            Navigator.of(context).pushReplacement(
-              MaterialPageRoute(
-                builder: (_) => const ProfilePicture(),
-              ),
-            );
-          }
+          // if (success) {
+          //   Navigator.of(context).pushReplacement(
+          //     MaterialPageRoute(
+          //       builder: (_) => const ProfilePicture(),
+          //     ),
+          //   );
+          // }
         } catch (e) {
           loading = false;
           notifyListeners();

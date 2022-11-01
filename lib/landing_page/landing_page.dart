@@ -1,3 +1,4 @@
+import 'package:devhub/auth/register/register.dart';
 import 'package:flutter/material.dart';
 import '../auth/login/login.dart';
 
@@ -35,8 +36,7 @@ class _LandingState extends State<Landing> {
               style: TextStyle(
                 fontSize: 22.0,
                 fontWeight: FontWeight.w300,
-                fontFamily: 'Ubuntu-light',
-                
+                // fontFamily: 'sans-serif',  
               ),
               ),
             ),
@@ -82,7 +82,7 @@ class _LandingState extends State<Landing> {
                   onTap: () {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (_) => const Login(),
+                        builder: (_) => const Register(),
                       ),
                     );
                   },
@@ -93,7 +93,11 @@ class _LandingState extends State<Landing> {
                       SizedBox(width: 5.0),
                       GestureDetector(
                         onTap: () {
-                          print("Register");
+                           Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                              builder: (_) => const Register(),
+                            ),
+                          );
                         },
                         child: Text(
                           'Sign Up',

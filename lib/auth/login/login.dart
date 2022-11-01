@@ -1,3 +1,4 @@
+import 'package:devhub/auth/register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
@@ -66,7 +67,11 @@ class _LoginState extends State<Login> {
                 SizedBox(width: 5.0),
                 GestureDetector(
                   onTap: () {
-                    print("Register");
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => const Register(),
+                      ),
+                    );
                   },
                   child: Text(
                     'Sign Up',

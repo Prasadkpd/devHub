@@ -1,10 +1,14 @@
 import 'package:devhub/view_models/auth/register_view_model.dart';
 import 'package:devhub/widgets/indeicators.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
+
+import '../../components/password_text_field.dart';
+import '../../components/text_form_builder.dart';
+import '../../utils/validation.dart';
+import '../login/login.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -21,13 +25,151 @@ class _RegisterState extends State<Register> {
       progressIndicator: circularProgress(context),
       isLoading: viewModel.loading,
       child: Scaffold(
-key: viewModel.scaffoldKey,
-body: ListView(
-  padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
-  children: [
-    SizedBox()
-  ],
-),
+        key: viewModel.scaffoldKey,
+        body: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height / 10),
+            Text(
+              'Welcome to DevHub\nCreate a new account and connect with developers',
+              textAlign: TextAlign.center,
+              style: GoogleFonts.nunitoSans(
+                fontWeight: FontWeight.bold,
+                fontSize: 25.0,
+              ),
+            ),
+            const SizedBox(height: 30.0),
+            buildForm(viewModel, context),
+            const SizedBox(height: 30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Already have an account  ',
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                        builder: (_) => const Login(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Login',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  buildForm(RegisterViewModel viewModel, BuildContext context) {
+    return Form(
+      key: viewModel.formKey,
+      autovalidateMode: AutovalidateMode.onUserInteraction,
+      child: Column(
+        children: [
+          TextFormBuilder(
+            enabled: !viewModel.loading,
+            prefix: Icons.person_outline,
+            hintText: "Username",
+            textInputAction: TextInputAction.next,
+            validateFunction: Validations.validateName,
+            onSaved: (String val) {
+              viewModel.setName(val);
+            },
+            focusNode: viewModel.usernameFN,
+            nextFocusNode: viewModel.emailFN,
+          ),
+          const SizedBox(height: 20.0),
+          TextFormBuilder(
+            enabled: !viewModel.loading,
+            prefix: Icons.mail_outline,
+            hintText: "Email",
+            textInputAction: TextInputAction.next,
+            validateFunction: Validations.validateEmail,
+            onSaved: (String val) {
+              viewModel.setEmail(val);
+            },
+            focusNode: viewModel.emailFN,
+            nextFocusNode: viewModel.countryFN,
+          ),
+          const SizedBox(height: 20.0),
+          TextFormBuilder(
+            enabled: !viewModel.loading,
+            prefix: Icons.person_pin_circle_outlined,
+            hintText: "Country",
+            textInputAction: TextInputAction.next,
+            validateFunction: Validations.validateName,
+            onSaved: (String val) {
+              viewModel.setCountry(val);
+            },
+            focusNode: viewModel.countryFN,
+            nextFocusNode: viewModel.passFN,
+          ),
+          const SizedBox(height: 20.0),
+          PasswordFormBuilder(
+            enabled: !viewModel.loading,
+            prefix: Icons.lock_outline,
+            suffix: Icons.remove_red_eye_outlined,
+            hintText: "Password",
+            textInputAction: TextInputAction.next,
+            validateFunction: Validations.validatePassword,
+            obscureText: true,
+            onSaved: (String val) {
+              viewModel.setPassword(val);
+            },
+            focusNode: viewModel.passFN,
+            nextFocusNode: viewModel.cPassFN,
+          ),
+          const SizedBox(height: 20.0),
+          PasswordFormBuilder(
+            enabled: !viewModel.loading,
+            prefix: Icons.lock_open_outlined,
+            hintText: "Confirm Password",
+            textInputAction: TextInputAction.done,
+            validateFunction: Validations.validatePassword,
+            submitAction: () => viewModel.register(context),
+            obscureText: true,
+            onSaved: (String val) {
+              viewModel.setConfirmPass(val);
+            },
+            focusNode: viewModel.cPassFN,
+          ),
+          const SizedBox(height: 25.0),
+          SizedBox(
+            height: 45.0,
+            width: 180.0,
+            child: ElevatedButton(
+              style: ButtonStyle(
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40.0),
+                  ),
+                ),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).colorScheme.secondary),
+              ),
+              child: Text(
+                'sign up'.toUpperCase(),
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              onPressed: () => viewModel.register(context),
+            ),
+          ),
+        ],
       ),
     );
   }
