@@ -16,11 +16,11 @@ import 'components/life_cycle_event_handler.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Config.initFirebase();
-   runApp(DevicePreview(
-    enabled: !kReleaseMode,
-    builder: (context) => MyApp(),
-  ));
-  // runApp(MyApp());
+  //  runApp(DevicePreview(
+  //   enabled: !kReleaseMode,
+  //   builder: (context) => MyApp(),
+  // ));
+  runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {
@@ -59,7 +59,7 @@ class _MyAppState extends State<MyApp> {
               stream: FirebaseAuth.instance.authStateChanges(),
               builder: ((BuildContext context, snapshot) {
                 if (snapshot.hasData) {
-                  return const TabScreen();
+                  return TabScreen();
                 } else {
                   return const Landing();
                 }

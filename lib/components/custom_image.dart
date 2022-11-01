@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-class CustomeImage extends StatelessWidget {
+class CustomImage extends StatelessWidget {
   final String? imageUrl;
   final double height;
   final double width;
   final BoxFit fit;
 
-  const CustomeImage({super.key, 
+  const CustomImage({super.key, 
     this.imageUrl,
     this.height = 100.0,
     this.width = double.infinity,

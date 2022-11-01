@@ -1,13 +1,18 @@
 import 'package:animations/animations.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:devhub/posts/create_post.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
+import 'package:devhub/components/fab_container.dart';
+import 'package:devhub/pages/notification.dart';
+import 'package:devhub/pages/profile.dart';
+import 'package:devhub/pages/search.dart';
+import 'package:devhub/pages/feeds.dart';
+import 'package:devhub/utils/firebase.dart';
 
 class TabScreen extends StatefulWidget {
-  const TabScreen({super.key});
-
   @override
-  State<TabScreen> createState() => _TabScreenState();
+  _TabScreenState createState() => _TabScreenState();
 }
 
 class _TabScreenState extends State<TabScreen> {
@@ -16,15 +21,33 @@ class _TabScreenState extends State<TabScreen> {
   List pages = [
     {
       'title': 'Home',
-      'icon': Icons.home,
-      'page': const Text("Hello World"),
+      'icon': Ionicons.home,
+      'page': Feeds(),
       'index': 0,
     },
     {
       'title': 'Search',
-      'icon': Icons.search,
-      'page': const Text("Second"),
+      'icon': Ionicons.search,
+      'page': Search(),
       'index': 1,
+    },
+    {
+      'title': '',
+      'icon': Ionicons.add_circle,
+      'page': CreatePost(),
+      'index': 2,
+    },
+    {
+      'title': 'Notification',
+      'icon': CupertinoIcons.bell_solid,
+      'page': Activities(),
+      'index': 3,
+    },
+    {
+      'title': 'Profile',
+      'icon': CupertinoIcons.person_fill,
+      'page': Profile(profileId: firebaseAuth.currentUser!.uid),
+      'index': 4,
     },
   ];
 
@@ -54,7 +77,21 @@ class _TabScreenState extends State<TabScreen> {
             SizedBox(width: 5),
             for (Map item in pages)
               item['index'] == 2
-                  ? buildFab()
+                  ?  Padding(
+                padding: const EdgeInsets.only(top: 5.0),
+                child: IconButton(
+                  icon: Icon(
+                    item['icon'],
+                    color: item['index'] != _page
+                        ? Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black
+                        : Theme.of(context).colorScheme.secondary,
+                    size: 25.0,
+                  ),
+                  onPressed: () => navigationTapped(item['index']),
+                ),
+              )
                   : Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: IconButton(
@@ -70,9 +107,7 @@ class _TabScreenState extends State<TabScreen> {
                         onPressed: () => navigationTapped(item['index']),
                       ),
                     ),
-            const SizedBox(
-              width: 5,
-            )
+            SizedBox(width: 5),
           ],
         ),
       ),
@@ -83,7 +118,11 @@ class _TabScreenState extends State<TabScreen> {
     return Container(
       height: 45.0,
       width: 45.0,
-      child: null,
+      // ignore: missing_required_param
+      child: FabContainer(
+        icon: Ionicons.add_outline,
+        mini: true,
+      ),
     );
   }
 

@@ -35,7 +35,7 @@ class LoginViewModel extends ChangeNotifier {
         print(success);
         if (success) {
           Navigator.of(context)
-              .pushReplacement(CupertinoPageRoute(builder: (_) => const TabScreen()));
+              .pushReplacement(CupertinoPageRoute(builder: (_) => TabScreen()));
         }
       } catch (e) {
         loading = false;

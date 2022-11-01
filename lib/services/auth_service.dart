@@ -1,47 +1,48 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:devhub/utils/firebase.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:devhub/utils/firebase.dart';
 
 class AuthService {
-  
   User getCurrentUser() {
     User user = firebaseAuth.currentUser!;
     return user;
   }
 
+//create a firebase user
   Future<bool> createUser(
       {String? name,
       User? user,
       String? email,
-      String country = "Sri Lanka",
-      String? password,
-      String? jobRole}) async {
+      String? country,
+      String? password, String? jobRole}) async {
     var res = await firebaseAuth.createUserWithEmailAndPassword(
       email: '$email',
       password: '$password',
     );
     if (res.user != null) {
-      await saveUserToFirestore(name!, res.user!, email!, country!, jobRole!);
+      await saveUserToFirestore(name!, res.user!, email!, country!);
       return true;
     } else {
       return false;
     }
   }
 
+//this will save the details inputted by the user to firestore.
   saveUserToFirestore(
-      String name, User user, String email, String country, String jobRole) async {
-    await userRef.doc(user.uid).set({
+      String name, User user, String email, String country) async {
+    await usersRef.doc(user.uid).set({
       'username': name,
       'email': email,
       'time': Timestamp.now(),
       'id': user.uid,
-      'role': jobRole,
+      'bio': "",
       'country': country,
       'photoUrl': user.photoURL ?? '',
       'gender': '',
     });
   }
 
+//function to login a user with his email and password
   Future<bool> loginUser({String? email, String? password}) async {
     var res = await firebaseAuth.signInWithEmailAndPassword(
       email: '$email',
@@ -64,7 +65,7 @@ class AuthService {
   }
 
   String handleFirebaseAuthError(String e) {
-    if (e.contains("ERROR_WEEK_PASSWORD")) {
+    if (e.contains("ERROR_WEAK_PASSWORD")) {
       return "Password is too weak";
     } else if (e.contains("invalid-email")) {
       return "Invalid Email";
