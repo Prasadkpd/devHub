@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'custom_card.dart';
 
 class PasswordFormBuilder extends StatefulWidget {
@@ -106,7 +105,7 @@ class _PasswordFormBuilderState extends State<PasswordFormBuilder> {
                       setState(() => obscureText = !obscureText);
                     },
                     child: Icon(
-                      obscureText ? widget.suffix : Ionicons.eye_off_outline,
+                      obscureText ? widget.suffix : Icons.visibility_off_outlined,
                       size: 15.0,
                       color: Theme.of(context).colorScheme.secondary,
                     ),

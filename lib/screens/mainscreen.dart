@@ -2,7 +2,6 @@ import 'package:animations/animations.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 class TabScreen extends StatefulWidget {
   const TabScreen({super.key});
@@ -17,13 +16,13 @@ class _TabScreenState extends State<TabScreen> {
   List pages = [
     {
       'title': 'Home',
-      'icon': Ionicons.home,
+      'icon': Icons.home,
       'page': const Text("Hello World"),
       'index': 0,
     },
     {
       'title': 'Search',
-      'icon': Ionicons.search,
+      'icon': Icons.search,
       'page': const Text("Second"),
       'index': 1,
     },

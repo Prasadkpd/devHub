@@ -16,11 +16,11 @@ import 'components/life_cycle_event_handler.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Config.initFirebase();
-  //  runApp(DevicePreview(
-  //   enabled: !kReleaseMode,
-  //   builder: (context) => MyApp(),
-  // ));
-  runApp(MyApp());
+   runApp(DevicePreview(
+    enabled: !kReleaseMode,
+    builder: (context) => MyApp(),
+  ));
+  // runApp(MyApp());
 }
 
 class MyApp extends StatefulWidget {

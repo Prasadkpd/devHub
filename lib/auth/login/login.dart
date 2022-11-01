@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:devhub/components/password_text_field.dart';
@@ -93,7 +92,7 @@ class _LoginState extends State<Login> {
         children: [
           TextFormBuilder(
             enabled: !viewModel.loading,
-            prefix: Ionicons.mail_outline,
+            prefix: Icons.mail_outline,
             hintText: "Email",
             textInputAction: TextInputAction.next,
             validateFunction: Validations.validateEmail,
@@ -106,8 +105,8 @@ class _LoginState extends State<Login> {
           const SizedBox(height: 15.0),
           PasswordFormBuilder(
             enabled: !viewModel.loading,
-            prefix: Ionicons.lock_closed_outline,
-            suffix: Ionicons.eye_outline,
+            prefix: Icons.lock_outline,
+            suffix: Icons.remove_red_eye_outlined,
             hintText: "Password",
             textInputAction: TextInputAction.done,
             validateFunction: Validations.validatePassword,
