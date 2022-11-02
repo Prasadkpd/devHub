@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:devhub/screens/mainscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
@@ -37,10 +38,14 @@ class _CreatePostState extends State<CreatePost> {
               icon: Icon(Icons.highlight_off_outlined),
               onPressed: () {
                 viewModel.resetPost();
-                Navigator.pop(context);
+                  Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (_) => TabScreen(),
+                  ),
+                );
               },
             ),
-            title: Text('WOOBLE'.toUpperCase()),
+            title: Text('DevHub'.toUpperCase()),
             centerTitle: true,
             actions: [
               GestureDetector(
@@ -109,8 +114,8 @@ class _CreatePostState extends State<CreatePost> {
                       ? CustomImage(
                           imageUrl: viewModel.imgLink,
                           width: MediaQuery.of(context).size.width,
-                          height: MediaQuery.of(context).size.width - 30,
-                          fit: BoxFit.cover,
+                          height: MediaQuery.of(context).size.height,
+                          fit: BoxFit.contain,
                         )
                       : viewModel.mediaUrl == null
                           ? Center(

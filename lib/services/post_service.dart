@@ -15,6 +15,8 @@ class PostService extends Service {
   uploadProfilePicture(File image, User user) async {
     String link = await uploadImage(profilePic, image);
     var ref = usersRef.doc(user.uid);
+        print("Profile Pic Link");
+    print(link);
     ref.update({
       "photoUrl": link,
     });

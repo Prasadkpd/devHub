@@ -9,9 +9,9 @@ class CustomImage extends StatelessWidget {
 
   const CustomImage({super.key, 
     this.imageUrl,
-    this.height = 100.0,
+    this.height = double.infinity,
     this.width = double.infinity,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.contain,
   });
 
   @override
