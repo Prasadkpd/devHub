@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:devhub/models/post.dart';
 import 'package:devhub/utils/firebase.dart';
 import 'package:devhub/widgets/indeicators.dart';
@@ -25,7 +24,7 @@ class _ListPostsState extends State<ListPosts> {
       appBar: AppBar(
         leading: InkWell(
           onTap: () => Navigator.pop(context),
-          child: Icon(Ionicons.chevron_back),
+          child: Icon(Icons.chevron_left_outlined),
         ),
         title: Column(
           children: [

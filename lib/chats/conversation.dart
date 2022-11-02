@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
 import 'package:devhub/models/enum/message_type.dart';
 import 'package:devhub/models/message.dart';
@@ -160,7 +159,7 @@ class _ConversationState extends State<Conversation> {
                         ),
                         IconButton(
                           icon: Icon(
-                            Ionicons.send,
+                            Icons.send,
                             color: Theme.of(context).colorScheme.secondary,
                           ),
                           onPressed: () {

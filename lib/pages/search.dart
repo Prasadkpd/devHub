@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:devhub/chats/conversation.dart';
 import 'package:devhub/models/user.dart';
 import 'package:devhub/pages/profile.dart';
@@ -130,7 +129,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                     searchController.clear();
                   },
                   child: Icon(
-                    Ionicons.close_outline,
+                    Icons.highlight_off_outlined,
                     size: 12.0,
                     color: Theme.of(context).colorScheme.secondary,
                   ),

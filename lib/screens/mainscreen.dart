@@ -2,7 +2,6 @@ import 'package:animations/animations.dart';
 import 'package:devhub/posts/create_post.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:devhub/components/fab_container.dart';
 import 'package:devhub/pages/notification.dart';
 import 'package:devhub/pages/profile.dart';
@@ -21,31 +20,31 @@ class _TabScreenState extends State<TabScreen> {
   List pages = [
     {
       'title': 'Home',
-      'icon': Ionicons.home,
+      'icon': Icons.home,
       'page': Feeds(),
       'index': 0,
     },
     {
       'title': 'Search',
-      'icon': Ionicons.search,
+      'icon': Icons.search,
       'page': Search(),
       'index': 1,
     },
     {
       'title': '',
-      'icon': Ionicons.add_circle,
+      'icon': Icons.add_circle,
       'page': CreatePost(),
       'index': 2,
     },
     {
       'title': 'Notification',
-      'icon': CupertinoIcons.bell_solid,
+      'icon': Icons.notifications_active,
       'page': Activities(),
       'index': 3,
     },
     {
       'title': 'Profile',
-      'icon': CupertinoIcons.person_fill,
+      'icon': Icons.person,
       'page': Profile(profileId: firebaseAuth.currentUser!.uid),
       'index': 4,
     },
@@ -120,7 +119,7 @@ class _TabScreenState extends State<TabScreen> {
       width: 45.0,
       // ignore: missing_required_param
       child: FabContainer(
-        icon: Ionicons.add_outline,
+        icon: Icons.add_circle,
         mini: true,
       ),
     );

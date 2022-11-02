@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 
 AppBar header(context) {
   return AppBar(
@@ -7,7 +6,7 @@ AppBar header(context) {
     centerTitle: true,
     actions: [Padding(
       padding: const EdgeInsets.only(right:20.0),
-      child: Icon(Ionicons.notifications_outline),
+      child: Icon(Icons.notifications_outlined),
     )],
   );
 }

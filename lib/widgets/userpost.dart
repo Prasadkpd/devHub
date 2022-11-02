@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:like_button/like_button.dart';
 import 'package:devhub/components/custom_card.dart';
 import 'package:devhub/components/custom_image.dart';
@@ -242,7 +241,7 @@ class UserPost extends StatelessWidget {
                 dotLastColor: Color(0xffff8c00)),
             likeBuilder: (bool isLiked) {
               return Icon(
-                docs.isEmpty ? Ionicons.heart_outline : Ionicons.heart,
+                docs.isEmpty ? Icons.favorite_border_outlined : Icons.favorite_outlined,
                 color: docs.isEmpty
                     ? Theme.of(context).brightness == Brightness.dark
                         ? Colors.white

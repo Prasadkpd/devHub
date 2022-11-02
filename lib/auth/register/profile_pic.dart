@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:devhub/components/custom_image.dart';
@@ -124,7 +123,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
               ),
               Divider(),
               ListTile(
-                leading: Icon(Ionicons.camera_outline),
+                leading: Icon(Icons.camera_outlined),
                 title: Text('Camera'),
                 onTap: () {
                   Navigator.pop(context);
@@ -132,7 +131,7 @@ class _ProfilePictureState extends State<ProfilePicture> {
                 },
               ),
               ListTile(
-                leading: Icon(Ionicons.image),
+                leading: Icon(Icons.image),
                 title: Text('Gallery'),
                 onTap: () {
                   Navigator.pop(context);

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
 import 'package:devhub/components/text_form_builder.dart';
@@ -125,7 +124,7 @@ class _EditProfileState extends State<EditProfile> {
             TextFormBuilder(
               enabled: !viewModel.loading,
               initialValue: widget.user!.username,
-              prefix: Ionicons.person_outline,
+              prefix: Icons.person_outline,
               hintText: "Username",
               textInputAction: TextInputAction.next,
               validateFunction: Validations.validateName,
@@ -137,7 +136,7 @@ class _EditProfileState extends State<EditProfile> {
             TextFormBuilder(
               initialValue: widget.user!.country,
               enabled: !viewModel.loading,
-              prefix: Ionicons.pin_outline,
+              prefix: Icons.person_pin_circle_outlined,
               hintText: "Country",
               textInputAction: TextInputAction.next,
               validateFunction: Validations.validateName,

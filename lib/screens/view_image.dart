@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:like_button/like_button.dart';
 import 'package:devhub/models/post.dart';
 import 'package:devhub/models/user.dart';
@@ -53,7 +52,7 @@ class _ViewImageState extends State<ViewImage> {
                     SizedBox(height: 3.0),
                     Row(
                       children: [
-                        Icon(Ionicons.alarm_outline, size: 13.0),
+                        Icon(Icons.access_alarm_outlined, size: 13.0),
                         SizedBox(width: 3.0),
                         Text(timeago.format(widget.post!.timestamp!.toDate())),
                       ],
@@ -190,7 +189,7 @@ class _ViewImageState extends State<ViewImage> {
             ),
             likeBuilder: (bool isLiked) {
               return Icon(
-                docs.isEmpty ? Ionicons.heart_outline : Ionicons.heart,
+                docs.isEmpty ? Icons.favorite_border_outlined : Icons.favorite_outlined,
                 color: docs.isEmpty ? Colors.grey : Colors.red,
                 size: 25,
               );

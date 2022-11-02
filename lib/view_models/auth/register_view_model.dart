@@ -36,13 +36,14 @@ class RegisterViewModel extends ChangeNotifier {
               password: password,
               jobRole: jobRole);
           print(success);
-          // if (success) {
-          //   Navigator.of(context).pushReplacement(
-          //     MaterialPageRoute(
-          //       builder: (_) => const ProfilePicture(),
-          //     ),
-          //   );
-          // }
+          if (success) {
+            // ignore: use_build_context_synchronously
+            Navigator.of(context).pushReplacement(
+              MaterialPageRoute(
+                builder: (_) =>  ProfilePicture(),
+              ),
+            );
+          }
         } catch (e) {
           loading = false;
           notifyListeners();

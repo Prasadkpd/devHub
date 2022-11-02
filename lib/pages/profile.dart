@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:devhub/auth/register/register.dart';
 import 'package:devhub/components/stream_grid_wrapper.dart';
 import 'package:devhub/models/post.dart';
@@ -204,7 +203,7 @@ class _ProfileState extends State<Profile> {
                                             child: Column(
                                               children: [
                                                 Icon(
-                                                  Ionicons.settings_outline,
+                                                  Icons.settings_outlined,
                                                   color: Theme.of(context)
                                                       .colorScheme
                                                       .secondary,
@@ -366,7 +365,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                               );
                             },
-                            icon: Icon(Ionicons.grid_outline),
+                            icon: Icon(Icons.grid_3x3_outlined),
                           )
                         ],
                       ),

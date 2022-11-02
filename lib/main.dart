@@ -6,7 +6,6 @@ import 'package:devhub/utils/constants.dart';
 import 'package:devhub/utils/providers.dart';
 import 'package:devhub/view_models/theme/theme_view_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';

@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:ionicons/ionicons.dart';
 import 'package:devhub/chats/recent_chats.dart';
 import 'package:devhub/models/post.dart';
 import 'package:devhub/utils/constants.dart';
@@ -55,7 +54,7 @@ class _FeedsState extends State<Feeds> {
         actions: [
           IconButton(
             icon: Icon(
-              Ionicons.chatbubble_ellipses,
+              Icons.forum_outlined,
               size: 30.0,
             ),
             onPressed: () {
