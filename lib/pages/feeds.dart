@@ -6,7 +6,7 @@ import 'package:devhub/models/post.dart';
 import 'package:devhub/utils/constants.dart';
 import 'package:devhub/utils/firebase.dart';
 import 'package:devhub/widgets/indeicators.dart';
-import 'package:devhub/widgets/story_widget.dart';
+// import 'package:devhub/widgets/story_widget.dart';
 import 'package:devhub/widgets/userpost.dart';
 
 class Feeds extends StatefulWidget {
@@ -80,9 +80,10 @@ class _FeedsState extends State<Feeds> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              StoryWidget(),
+              // StoryWidget(),
               Container(
                 height: MediaQuery.of(context).size.height,
+                padding: EdgeInsets.only(bottom: 100.0),
                 child: FutureBuilder(
                   future: postRef
                       .orderBy('timestamp', descending: true)

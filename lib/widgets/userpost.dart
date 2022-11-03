@@ -59,7 +59,7 @@ class UserPost extends StatelessWidget {
                     child: CustomImage(
                       imageUrl: post?.mediaUrl ?? '',
                       height: 350.0,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.contain,
                       width: double.infinity,
                     ),
                   ),

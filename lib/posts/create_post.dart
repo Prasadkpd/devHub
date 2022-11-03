@@ -130,8 +130,8 @@ class _CreatePostState extends State<CreatePost> {
                           : Image.file(
                               viewModel.mediaUrl!,
                               width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.width - 30,
-                              fit: BoxFit.cover,
+                              height: MediaQuery.of(context).size.height,
+                              fit: BoxFit.contain,
                             ),
                 ),
               ),
