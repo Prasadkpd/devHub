@@ -57,7 +57,7 @@ class _CreatePostState extends State<CreatePost> {
                 child: Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Text(
-                    'Post'.toUpperCase(),
+                    'Ask Question'.toUpperCase(),
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 15.0,
@@ -120,7 +120,7 @@ class _CreatePostState extends State<CreatePost> {
                       : viewModel.mediaUrl == null
                           ? Center(
                               child: Text(
-                                'Upload a Photo',
+                                'Upload a Snap of Code',
                                 style: TextStyle(
                                   color:
                                       Theme.of(context).colorScheme.secondary,
@@ -137,7 +137,7 @@ class _CreatePostState extends State<CreatePost> {
               ),
               SizedBox(height: 20.0),
               Text(
-                'Post Caption'.toUpperCase(),
+                'Caption Or Question'.toUpperCase(),
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w600,
@@ -146,7 +146,7 @@ class _CreatePostState extends State<CreatePost> {
               TextFormField(
                 initialValue: viewModel.description,
                 decoration: InputDecoration(
-                  hintText: 'Eg. This is very beautiful place!',
+                  hintText: 'Eg. Enter the question or error here',
                   focusedBorder: UnderlineInputBorder(),
                 ),
                 maxLines: null,
@@ -154,7 +154,7 @@ class _CreatePostState extends State<CreatePost> {
               ),
               SizedBox(height: 20.0),
               Text(
-                'Location'.toUpperCase(),
+                'Programming Language'.toUpperCase(),
                 style: TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w600,
@@ -178,7 +178,7 @@ class _CreatePostState extends State<CreatePost> {
                 trailing: IconButton(
                   tooltip: "Use your current location",
                   icon: Icon(
-                    CupertinoIcons.map_pin_ellipse,
+                    Icons.code_off_rounded,
                     size: 25.0,
                   ),
                   iconSize: 30.0,

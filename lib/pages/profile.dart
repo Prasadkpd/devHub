@@ -59,7 +59,7 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('WOOBLE'),
+        title: Text('DEVHUB'),
         actions: [
           widget.profileId == firebaseAuth.currentUser!.uid
               ? Center(
@@ -106,6 +106,7 @@ class _ProfileState extends State<Profile> {
                     );
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +142,7 @@ class _ProfileState extends State<Profile> {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: 32.0),
+                                SizedBox(height: 15.0),
                                 Row(
                                   children: [
                                     Visibility(
@@ -166,7 +167,7 @@ class _ProfileState extends State<Profile> {
                                         Container(
                                           width: 130.0,
                                           child: Text(
-                                            user.country!,
+                                            user.role!,
                                             style: TextStyle(
                                               fontSize: 12.0,
                                               fontWeight: FontWeight.w600,
@@ -192,29 +193,34 @@ class _ProfileState extends State<Profile> {
                                       ],
                                     ),
                                     widget.profileId == currentUserId()
-                                        ? InkWell(
-                                            onTap: () {
-                                              Navigator.of(context).push(
-                                                CupertinoPageRoute(
-                                                  builder: (_) => Setting(),
-                                                ),
-                                              );
-                                            },
-                                            child: Column(
-                                              children: [
-                                                Icon(
-                                                  Icons.settings_outlined,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .secondary,
-                                                ),
-                                                Text(
-                                                  'settings',
-                                                  style: TextStyle(
-                                                    fontSize: 11.5,
+                                        ? Container(
+                                          // color: Colors.red,
+                                          margin: EdgeInsets.only(left: 40.0),
+                                            child: InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder: (_) => Setting(),
                                                   ),
-                                                )
-                                              ],
+                                                );
+                                              },
+                                              child: Column(
+                                                children: [
+                                                  Icon(
+                                                    Icons.settings_outlined,
+                                                    size: 30,
+                                                    color: Theme.of(context)
+                                                        .colorScheme
+                                                        .secondary,
+                                                  ),
+                                                  Text(
+                                                    'settings',
+                                                    style: TextStyle(
+                                                      fontSize: 11.5,
+                                                    ),
+                                                  )
+                                                ],
+                                              ),
                                             ),
                                           )
                                         : const Text('')
@@ -227,19 +233,27 @@ class _ProfileState extends State<Profile> {
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 10.0, left: 20.0),
-                          child: user.bio!.isEmpty
-                              ? Container()
-                              : Container(
-                                  width: 200,
-                                  child: Text(
-                                    user.bio!,
-                                    style: TextStyle(
-                                      fontSize: 10.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                    maxLines: null,
-                                  ),
-                                ),
+                          child: Text(
+                            "I am a fullstack developer",
+                            style: TextStyle(
+                              fontSize: 10.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                            maxLines: null,
+                          ),
+                          // user.bio!.isEmpty
+                          //     ? Container()
+                          //     : Container(
+                          //         width: 200,
+                          //         child: Text(
+                          //           user.bio!,
+                          //           style: TextStyle(
+                          //             fontSize: 10.0,
+                          //             fontWeight: FontWeight.w600,
+                          //           ),
+                          //           maxLines: null,
+                          //         ),
+                          //       ),
                         ),
                         SizedBox(height: 10.0),
                         Container(

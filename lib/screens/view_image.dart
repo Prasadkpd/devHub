@@ -80,8 +80,8 @@ class _ViewImageState extends State<ViewImage> {
           errorWidget: (context, url, error) {
             return Icon(Icons.error);
           },
-          height: 400.0,
-          fit: BoxFit.cover,
+          height: MediaQuery.of(context).size.height,
+          fit: BoxFit.contain,
           width: MediaQuery.of(context).size.width,
         ),
       ),
@@ -129,7 +129,7 @@ class _ViewImageState extends State<ViewImage> {
 
   buildLikeButton() {
     return StreamBuilder(
-      stream: likesRef
+      stream: supportRef
           .where('postId', isEqualTo: widget.post!.postId)
           .where('userId', isEqualTo: currentUserId())
           .snapshots(),
@@ -162,7 +162,7 @@ class _ViewImageState extends State<ViewImage> {
           ///added animated like button
           Future<bool> onLikeButtonTapped(bool isLiked) async {
             if (docs.isEmpty) {
-              likesRef.add({
+              supportRef.add({
                 'userId': currentUserId(),
                 'postId': widget.post!.postId,
                 'dateCreated': Timestamp.now(),
@@ -170,7 +170,7 @@ class _ViewImageState extends State<ViewImage> {
               addLikesToNotification();
               return !isLiked;
             } else {
-              likesRef.doc(docs[0].id).delete();
+              supportRef.doc(docs[0].id).delete();
               removeLikeFromNotification();
               return isLiked;
             }

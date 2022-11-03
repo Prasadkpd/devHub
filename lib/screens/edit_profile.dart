@@ -134,14 +134,14 @@ class _EditProfileState extends State<EditProfile> {
             ),
             SizedBox(height: 10.0),
             TextFormBuilder(
-              initialValue: widget.user!.country,
+              initialValue: widget.user!.role,
               enabled: !viewModel.loading,
               prefix: Icons.person_pin_circle_outlined,
-              hintText: "Country",
+              hintText: "Job Role",
               textInputAction: TextInputAction.next,
               validateFunction: Validations.validateName,
               onSaved: (String val) {
-                viewModel.setCountry(val);
+                viewModel.setRole(val);
               },
             ),
             SizedBox(height: 10.0),
@@ -149,23 +149,23 @@ class _EditProfileState extends State<EditProfile> {
               "Bio",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            TextFormField(
-              maxLines: null,
-              initialValue: widget.user!.bio,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              validator: (String? value) {
-                if (value!.length > 1000) {
-                  return 'Bio must be short';
-                }
-                return null;
-              },
-              onSaved: (String? val) {
-                viewModel.setBio(val!);
-              },
-              onChanged: (String val) {
-                viewModel.setBio(val);
-              },
-            ),
+            // TextFormField(
+            //   maxLines: null,
+            //   initialValue: widget.user!.bio,
+            //   autovalidateMode: AutovalidateMode.onUserInteraction,
+            //   validator: (String? value) {
+            //     if (value!.length > 1000) {
+            //       return 'Bio must be short';
+            //     }
+            //     return null;
+            //   },
+            //   onSaved: (String? val) {
+            //     viewModel.setBio(val!);
+            //   },
+            //   onChanged: (String val) {
+            //     viewModel.setBio(val);
+            //   },
+            // ),
           ],
         ),
       ),

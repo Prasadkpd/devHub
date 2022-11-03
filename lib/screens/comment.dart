@@ -169,7 +169,7 @@ class _CommentsState extends State<Comments> {
       children: [
         Container(
           height: 350.0,
-          width: MediaQuery.of(context).size.width - 20.0,
+          width: MediaQuery.of(context).size.width,
           child: cachedNetworkImage(widget.post!.mediaUrl!),
         ),
         Padding(
@@ -195,7 +195,7 @@ class _CommentsState extends State<Comments> {
                       ),
                       SizedBox(width: 3.0),
                       StreamBuilder(
-                        stream: likesRef
+                        stream: supportRef
                             .where('postId', isEqualTo: widget.post!.postId)
                             .snapshots(),
                         builder:
@@ -270,7 +270,7 @@ class _CommentsState extends State<Comments> {
 
   buildLikeButton() {
     return StreamBuilder(
-      stream: likesRef
+      stream: supportRef
           .where('postId', isEqualTo: widget.post!.postId)
           .where('userId', isEqualTo: currentUserId())
           .snapshots(),
@@ -304,7 +304,7 @@ class _CommentsState extends State<Comments> {
           ///added animated like button
           Future<bool> onLikeButtonTapped(bool isLiked) async {
             if (docs.isEmpty) {
-              likesRef.add({
+              supportRef.add({
                 'userId': currentUserId(),
                 'postId': widget.post!.postId,
                 'dateCreated': Timestamp.now(),
@@ -312,7 +312,7 @@ class _CommentsState extends State<Comments> {
               addLikesToNotification();
               return !isLiked;
             } else {
-              likesRef.doc(docs[0].id).delete();
+              supportRef.doc(docs[0].id).delete();
               removeLikeFromNotification();
               return isLiked;
             }
@@ -320,18 +320,22 @@ class _CommentsState extends State<Comments> {
 
           return LikeButton(
             onTap: onLikeButtonTapped,
-            size: 25.0,
+            size: 28.0,
             circleColor:
-                CircleColor(start: Color(0xffFFC0CB), end: Color(0xffff0000)),
+                CircleColor(start: Color(0xffFFC0CB), end: Color.fromARGB(255, 60, 0, 255)),
             bubblesColor: BubblesColor(
-                dotPrimaryColor: Color(0xffFFA500),
-                dotSecondaryColor: Color(0xffd8392b),
-                dotThirdColor: Color(0xffFF69B4),
-                dotLastColor: Color(0xffff8c00)),
+                dotPrimaryColor: Color.fromARGB(255, 110, 116, 219),
+                dotSecondaryColor: Color.fromARGB(255, 72, 44, 42),
+                dotThirdColor: Color.fromARGB(255, 153, 135, 144),
+                dotLastColor: Color.fromARGB(255, 0, 13, 255)),
             likeBuilder: (bool isLiked) {
               return Icon(
-                docs.isEmpty ? Icons.favorite_border_outlined : Icons.favorite_outlined,
-                color: docs.isEmpty ? Colors.grey : Colors.red,
+                docs.isEmpty ? Icons.code_outlined : Icons.code_off_outlined,
+                color: docs.isEmpty
+                    ? Theme.of(context).brightness == Brightness.dark
+                        ? Colors.white
+                        : Colors.black
+                    : Color.fromARGB(255, 10, 38, 246),
                 size: 25,
               );
             },
@@ -346,10 +350,10 @@ class _CommentsState extends State<Comments> {
     return Padding(
       padding: const EdgeInsets.only(left: 7.0),
       child: Text(
-        '$count likes',
+        '$count supports',
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 10.0,
+          fontSize: 12.0,
         ),
       ),
     );

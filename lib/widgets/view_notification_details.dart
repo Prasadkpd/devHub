@@ -87,7 +87,7 @@ class _ViewActivityDetailsState extends State<ViewActivityDetails> {
             return Icon(Icons.error);
           },
           height: 400.0,
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
           width: MediaQuery.of(context).size.width,
         ),
       ),

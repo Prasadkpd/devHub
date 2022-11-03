@@ -5,7 +5,7 @@ import 'package:devhub/widgets/indeicators.dart';
 Widget cachedNetworkImage(String imgUrl) {
   return CachedNetworkImage(
     imageUrl: imgUrl,
-    fit: BoxFit.cover,
+    fit: BoxFit.contain,
     placeholder: (context, url) => circularProgress(context),
     errorWidget: (context, url, error) => Center(
       child: Text(

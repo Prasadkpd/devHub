@@ -51,6 +51,31 @@ class UserPost extends StatelessWidget {
             children: [
               Column(
                 children: [
+                  Container(
+                    margin: EdgeInsets.only(top: 40.0),
+                    // padding: const EdgeInsets.only(top: 40.0),
+                    child: Row(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Visibility(
+                          visible: post!.description != null &&
+                              post!.description.toString().isNotEmpty,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 5.0, top: 3.0),
+                            child: Text(
+                              '${post?.description ?? ""}',
+                              style: TextStyle(
+                                color:
+                                    Theme.of(context).textTheme.caption!.color,
+                                fontSize: 17.0,
+                              ),
+                              // maxLines: 2,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   ClipRRect(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10.0),
@@ -75,7 +100,7 @@ class UserPost extends StatelessWidget {
                           child: Row(
                             children: [
                               buildLikeButton(),
-                              SizedBox(width: 5.0),
+                              SizedBox(width: 0.0),
                               InkWell(
                                 borderRadius: BorderRadius.circular(10.0),
                                 onTap: () {
@@ -86,7 +111,7 @@ class UserPost extends StatelessWidget {
                                   );
                                 },
                                 child: Icon(
-                                  CupertinoIcons.chat_bubble,
+                                  Icons.source,
                                   size: 25.0,
                                 ),
                               ),
@@ -102,7 +127,7 @@ class UserPost extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.only(left: 0.0),
                                 child: StreamBuilder(
-                                  stream: likesRef
+                                  stream: supportRef
                                       .where('postId', isEqualTo: post!.postId)
                                       .snapshots(),
                                   builder: (context,
@@ -139,22 +164,6 @@ class UserPost extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Visibility(
-                          visible: post!.description != null &&
-                              post!.description.toString().isNotEmpty,
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 5.0, top: 3.0),
-                            child: Text(
-                              '${post?.description ?? ""}',
-                              style: TextStyle(
-                                color:
-                                    Theme.of(context).textTheme.caption!.color,
-                                fontSize: 15.0,
-                              ),
-                              maxLines: 2,
-                            ),
-                          ),
-                        ),
                         SizedBox(height: 3.0),
                         Padding(
                           padding: const EdgeInsets.all(3.0),
@@ -179,7 +188,7 @@ class UserPost extends StatelessWidget {
 
   buildLikeButton() {
     return StreamBuilder(
-      stream: likesRef
+      stream: supportRef
           .where('postId', isEqualTo: post!.postId)
           .where('userId', isEqualTo: currentUserId())
           .snapshots(),
@@ -187,34 +196,9 @@ class UserPost extends StatelessWidget {
         if (snapshot.hasData) {
           List<QueryDocumentSnapshot> docs = snapshot.data?.docs ?? [];
 
-          ///replaced this with an animated like button
-          // return IconButton(
-          //   onPressed: () {
-          //     if (docs.isEmpty) {
-          //       likesRef.add({
-          //         'userId': currentUserId(),
-          //         'postId': post!.postId,
-          //         'dateCreated': Timestamp.now(),
-          //       });
-          //       addLikesToNotification();
-          //     } else {
-          //       likesRef.doc(docs[0].id).delete();
-          //       services.removeLikeFromNotification(
-          //           post!.ownerId!, post!.postId!, currentUserId());
-          //     }
-          //   },
-          //   icon: docs.isEmpty
-          //       ? Icon(
-          //           CupertinoIcons.heart,
-          //         )
-          //       : Icon(
-          //           CupertinoIcons.heart_fill,
-          //           color: Colors.red,
-          //         ),
-          // );
           Future<bool> onLikeButtonTapped(bool isLiked) async {
             if (docs.isEmpty) {
-              likesRef.add({
+              supportRef.add({
                 'userId': currentUserId(),
                 'postId': post!.postId,
                 'dateCreated': Timestamp.now(),
@@ -222,7 +206,7 @@ class UserPost extends StatelessWidget {
               addLikesToNotification();
               return !isLiked;
             } else {
-              likesRef.doc(docs[0].id).delete();
+              supportRef.doc(docs[0].id).delete();
               services.removeLikeFromNotification(
                   post!.ownerId!, post!.postId!, currentUserId());
               return isLiked;
@@ -231,22 +215,22 @@ class UserPost extends StatelessWidget {
 
           return LikeButton(
             onTap: onLikeButtonTapped,
-            size: 25.0,
+            size: 28.0,
             circleColor:
-                CircleColor(start: Color(0xffFFC0CB), end: Color(0xffff0000)),
+                CircleColor(start: Color(0xffFFC0CB), end: Color.fromARGB(255, 0, 13, 255)),
             bubblesColor: BubblesColor(
-                dotPrimaryColor: Color(0xffFFA500),
-                dotSecondaryColor: Color(0xffd8392b),
-                dotThirdColor: Color(0xffFF69B4),
-                dotLastColor: Color(0xffff8c00)),
+                dotPrimaryColor: Color.fromARGB(255, 110, 116, 219),
+                dotSecondaryColor: Color.fromARGB(255, 72, 44, 42),
+                dotThirdColor: Color.fromARGB(255, 153, 135, 144),
+                dotLastColor: Color.fromARGB(255, 0, 13, 255)),
             likeBuilder: (bool isLiked) {
               return Icon(
-                docs.isEmpty ? Icons.favorite_border_outlined : Icons.favorite_outlined,
+                docs.isEmpty ? Icons.code_outlined : Icons.code_off_outlined,
                 color: docs.isEmpty
                     ? Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
                         : Colors.black
-                    : Colors.red,
+                    : Color.fromARGB(255, 10, 38, 246),
                 size: 25,
               );
             },
@@ -279,7 +263,7 @@ class UserPost extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 7.0),
       child: Text(
-        '$count likes',
+        '$count supports',
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 10.0,

@@ -133,7 +133,7 @@ class _ActivityItemsState extends State<ActivityItems> {
 
   buildTextConfiguration() {
     if (widget.activity!.type == "like") {
-      return "liked your post";
+      return "support your question";
     } else if (widget.activity!.type == "follow") {
       return "is following you";
     } else if (widget.activity!.type == "comment") {
@@ -155,7 +155,7 @@ class _ActivityItemsState extends State<ActivityItems> {
           return Icon(Icons.error);
         },
         height: 40.0,
-        fit: BoxFit.cover,
+        fit: BoxFit.contain,
         width: 40.0,
       ),
     );
