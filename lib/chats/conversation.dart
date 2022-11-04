@@ -13,6 +13,8 @@ import 'package:devhub/view_models/user/user_view_model.dart';
 import 'package:devhub/widgets/indeicators.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+import '../components/chat_bubble.dart';
+
 class Conversation extends StatefulWidget {
   final String userId;
   final String chatId;
@@ -73,7 +75,7 @@ class _ConversationState extends State<Conversation> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: Icon(
+            child: const Icon(
               Icons.keyboard_backspace,
             ),
           ),
@@ -102,13 +104,12 @@ class _ConversationState extends State<Conversation> {
                           Message message = Message.fromJson(
                             messages.reversed.toList()[index].data(),
                           );
-                          return Text("Hello");
-                          // ChatBubbleWidget(
-                          //   message: '${message.content}',
-                          //   time: message.time!,
-                          //   isMe: message.senderUid == user!.uid,
-                          //   type: message.type!,
-                          // );
+                          return ChatBubbleWidget(
+                            message: '${message.content}',
+                            time: message.time!,
+                            isMe: message.senderUid == user!.uid,
+                            type: message.type!,
+                          );
                         },
                       );
                     } else {

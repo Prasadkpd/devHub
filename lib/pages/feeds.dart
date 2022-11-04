@@ -82,6 +82,7 @@ class _FeedsState extends State<Feeds> {
             children: [
               // StoryWidget(),
               Container(
+                // color: Colors.red,
                 height: MediaQuery.of(context).size.height,
                 padding: EdgeInsets.only(bottom: 100.0),
                 child: FutureBuilder(

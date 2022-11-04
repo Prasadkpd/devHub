@@ -47,6 +47,7 @@ class _ListPostsState extends State<ListPosts> {
         ),
       ),
       body: Container(
+        // color: Colors.red,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         child: FutureBuilder(

@@ -8,6 +8,8 @@ import 'package:devhub/view_models/user/user_view_model.dart';
 import 'package:devhub/widgets/indeicators.dart';
 
 class Chats extends StatelessWidget {
+  const Chats({super.key});
+
   @override
   Widget build(BuildContext context) {
     UserViewModel viewModel =
@@ -16,19 +18,23 @@ class Chats extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
-          onTap: (){
+          onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(Icons.keyboard_backspace),
+          child: const Icon(Icons.keyboard_backspace),
         ),
-        title: Text("Chats"),
+        title: const Text("Chats"),
       ),
       body: StreamBuilder<QuerySnapshot>(
-        stream: userChatsStream('${viewModel.user!.uid ?? ""}'),
+        stream: userChatsStream(viewModel.user!.uid),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List chatList = snapshot.data!.docs;
+            print("Chat List Here");
+            print(chatList);
             if (chatList.isNotEmpty) {
+              print("chatList");
+              print(chatList);
               return ListView.separated(
                 itemCount: chatList.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -41,10 +47,12 @@ class Chats extends StatelessWidget {
                         Message message = Message.fromJson(
                           messages.first.data(),
                         );
+                        print("message");
                         List users = chatListSnapshot.get('users');
+                        print(users);
                         // remove the current user's id from the Users
                         // list so we can get the second user's id
-                        users.remove('${viewModel.user!.uid ?? ""}');
+                        users.remove(viewModel.user!.uid ?? "");
                         String recipient = users[0];
                         return ChatItem(
                           userId: recipient,
@@ -56,7 +64,7 @@ class Chats extends StatelessWidget {
                           currentUserId: viewModel.user!.uid ?? "",
                         );
                       } else {
-                        return SizedBox();
+                        return const SizedBox();
                       }
                     },
                   );

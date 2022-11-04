@@ -49,10 +49,23 @@ class UserPost extends StatelessWidget {
         closedBuilder: (BuildContext context, VoidCallback openContainer) {
           return Stack(
             children: [
+              buildUser(context),
               Column(
                 children: [
+                  SizedBox(height:8.0),
+                  ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10.0),
+                      topRight: Radius.circular(10.0),
+                    ),
+                    child: CustomImage(
+                      imageUrl: post?.mediaUrl ?? '',
+                      height: MediaQuery.of(context).size.height / 4,
+                      fit: BoxFit.contain,
+                      width: double.infinity,
+                    ),
+                  ),
                   Container(
-                    margin: EdgeInsets.only(top: 40.0),
                     // padding: const EdgeInsets.only(top: 40.0),
                     child: Row(
                       // crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +74,8 @@ class UserPost extends StatelessWidget {
                           visible: post!.description != null &&
                               post!.description.toString().isNotEmpty,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 5.0, top: 3.0),
+                            padding: const EdgeInsets.only(
+                                left: 5.0, top: 3.0, bottom: 3.0),
                             child: Text(
                               '${post?.description ?? ""}',
                               style: TextStyle(
@@ -74,18 +88,6 @@ class UserPost extends StatelessWidget {
                           ),
                         ),
                       ],
-                    ),
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
-                    ),
-                    child: CustomImage(
-                      imageUrl: post?.mediaUrl ?? '',
-                      height: 350.0,
-                      fit: BoxFit.contain,
-                      width: double.infinity,
                     ),
                   ),
                   Padding(
@@ -178,7 +180,6 @@ class UserPost extends StatelessWidget {
                   )
                 ],
               ),
-              buildUser(context),
             ],
           );
         },
@@ -216,8 +217,8 @@ class UserPost extends StatelessWidget {
           return LikeButton(
             onTap: onLikeButtonTapped,
             size: 28.0,
-            circleColor:
-                CircleColor(start: Color(0xffFFC0CB), end: Color.fromARGB(255, 0, 13, 255)),
+            circleColor: CircleColor(
+                start: Color(0xffFFC0CB), end: Color.fromARGB(255, 0, 13, 255)),
             bubblesColor: BubblesColor(
                 dotPrimaryColor: Color.fromARGB(255, 110, 116, 219),
                 dotSecondaryColor: Color.fromARGB(255, 72, 44, 42),
@@ -304,58 +305,60 @@ class UserPost extends StatelessWidget {
                     topRight: Radius.circular(10.0),
                   ),
                 ),
-                child: GestureDetector(
-                  onTap: () => showProfile(context, profileId: user.id!),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        user.photoUrl!.isEmpty
-                            ? CircleAvatar(
-                                radius: 20.0,
-                                backgroundColor:
-                                    Theme.of(context).colorScheme.secondary,
-                                child: Center(
-                                  child: Text(
-                                    '${user.username![0].toUpperCase()}',
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w900,
+                child: Container(
+                  child: GestureDetector(
+                    onTap: () => showProfile(context, profileId: user.id!),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          user.photoUrl!.isEmpty
+                              ? CircleAvatar(
+                                  radius: 20.0,
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.secondary,
+                                  child: Center(
+                                    child: Text(
+                                      '${user.username![0].toUpperCase()}',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 15.0,
+                                        fontWeight: FontWeight.w900,
+                                      ),
                                     ),
                                   ),
+                                )
+                              : CircleAvatar(
+                                  radius: 20.0,
+                                  backgroundImage: CachedNetworkImageProvider(
+                                    '${user.photoUrl}',
+                                  ),
                                 ),
-                              )
-                            : CircleAvatar(
-                                radius: 20.0,
-                                backgroundImage: CachedNetworkImageProvider(
-                                  '${user.photoUrl}',
+                          SizedBox(width: 5.0),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${post?.username ?? ""}',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.black,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                              Text(
+                                '${post?.location ?? 'Wooble'}',
+                                style: TextStyle(
+                                  fontSize: 10.0,
+                                  color: Color(0xff4D4D4D),
                                 ),
                               ),
-                        SizedBox(width: 5.0),
-                        Column(
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${post?.username ?? ""}',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w900,
-                                color: Colors.black,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                            Text(
-                              '${post?.location ?? 'Wooble'}',
-                              style: TextStyle(
-                                fontSize: 10.0,
-                                color: Color(0xff4D4D4D),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
