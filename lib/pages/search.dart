@@ -181,8 +181,8 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                               Theme.of(context).colorScheme.secondary,
                           child: Center(
                             child: Text(
-                              '${user.username![0].toUpperCase()}',
-                              style: TextStyle(
+                              user.username![0].toUpperCase(),
+                              style:const TextStyle(
                                 color: Colors.white,
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w900,
@@ -198,7 +198,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                         ),
                   title: Text(
                     user.username!,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style:const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     user.email!,
@@ -207,7 +207,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                     onTap: () {
                       Navigator.push(
                         context,
-                        CupertinoPageRoute(
+                        MaterialPageRoute(
                           builder: (_) => StreamBuilder(
                             stream: chatIdRef
                                 .where(
