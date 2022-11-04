@@ -136,7 +136,7 @@ class _EditProfileState extends State<EditProfile> {
             TextFormBuilder(
               initialValue: widget.user!.role,
               enabled: !viewModel.loading,
-              prefix: Icons.person_pin_circle_outlined,
+              prefix: Icons.person_pin,
               hintText: "Job Role",
               textInputAction: TextInputAction.next,
               validateFunction: Validations.validateName,
@@ -145,10 +145,10 @@ class _EditProfileState extends State<EditProfile> {
               },
             ),
             SizedBox(height: 10.0),
-            Text(
-              "Bio",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            // Text(
+            //   "Bio",
+            //   style: TextStyle(fontWeight: FontWeight.bold),
+            // ),
             // TextFormField(
             //   maxLines: null,
             //   initialValue: widget.user!.bio,

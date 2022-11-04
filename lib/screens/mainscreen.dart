@@ -1,8 +1,6 @@
 import 'package:animations/animations.dart';
 import 'package:devhub/posts/create_post.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:devhub/components/fab_container.dart';
 import 'package:devhub/pages/notification.dart';
 import 'package:devhub/pages/profile.dart';
 import 'package:devhub/pages/search.dart';
@@ -76,21 +74,21 @@ class _TabScreenState extends State<TabScreen> {
             SizedBox(width: 5),
             for (Map item in pages)
               item['index'] == 2
-                  ?  Padding(
-                padding: const EdgeInsets.only(top: 5.0),
-                child: IconButton(
-                  icon: Icon(
-                    item['icon'],
-                    color: item['index'] != _page
-                        ? Theme.of(context).brightness == Brightness.dark
-                        ? Colors.white
-                        : Colors.black
-                        : Theme.of(context).colorScheme.secondary,
-                    size: 25.0,
-                  ),
-                  onPressed: () => navigationTapped(item['index']),
-                ),
-              )
+                  ? Padding(
+                      padding: const EdgeInsets.all(0.0),
+                      child: IconButton(
+                        icon: Icon(
+                          item['icon'],
+                          color: item['index'] != _page
+                              ? Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black
+                              : Theme.of(context).colorScheme.secondary,
+                          size: 40.0,
+                        ),
+                        onPressed: () => navigationTapped(item['index']),
+                      ),
+                    )
                   : Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: IconButton(
@@ -110,13 +108,6 @@ class _TabScreenState extends State<TabScreen> {
           ],
         ),
       ),
-    );
-  }
-
-  buildFab() {
-    return Container(
-      height: 45.0,
-      width: 45.0,
     );
   }
 

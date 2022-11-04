@@ -1,12 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:devhub/chats/recent_chats.dart';
 import 'package:devhub/models/post.dart';
 import 'package:devhub/utils/constants.dart';
 import 'package:devhub/utils/firebase.dart';
 import 'package:devhub/widgets/indeicators.dart';
-// import 'package:devhub/widgets/story_widget.dart';
 import 'package:devhub/widgets/userpost.dart';
 
 class Feeds extends StatefulWidget {
@@ -51,23 +48,6 @@ class _FeedsState extends State<Feeds> {
           ),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.forum_outlined,
-              size: 30.0,
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (_) => Chats(),
-                ),
-              );
-            },
-          ),
-          SizedBox(width: 20.0),
-        ],
       ),
       body: RefreshIndicator(
         color: Theme.of(context).colorScheme.secondary,

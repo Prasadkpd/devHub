@@ -195,8 +195,8 @@ class _ProfileState extends State<Profile> {
                                     ),
                                     widget.profileId == currentUserId()
                                         ? Container(
-                                          // color: Colors.red,
-                                          margin: EdgeInsets.only(left: 40.0),
+                                            // color: Colors.red,
+                                            margin: EdgeInsets.only(left: 40.0),
                                             child: InkWell(
                                               onTap: () {
                                                 Navigator.of(context).push(
@@ -231,30 +231,6 @@ class _ProfileState extends State<Profile> {
                               ],
                             ),
                           ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 10.0, left: 20.0),
-                          child: Text(
-                            "I am a fullstack developer",
-                            style: TextStyle(
-                              fontSize: 10.0,
-                              fontWeight: FontWeight.w600,
-                            ),
-                            maxLines: null,
-                          ),
-                          // user.bio!.isEmpty
-                          //     ? Container()
-                          //     : Container(
-                          //         width: 200,
-                          //         child: Text(
-                          //           user.bio!,
-                          //           style: TextStyle(
-                          //             fontSize: 10.0,
-                          //             fontWeight: FontWeight.w600,
-                          //           ),
-                          //           maxLines: null,
-                          //         ),
-                          //       ),
                         ),
                         SizedBox(height: 10.0),
                         Container(
