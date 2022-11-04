@@ -110,8 +110,8 @@ class _FeedsState extends State<Feeds> {
                     } else if (snapshot.connectionState ==
                         ConnectionState.waiting) {
                       return circularProgress(context);
-                    } else
-                      return Center(
+                    } else {
+                      return const Center(
                         child: Text(
                           'No Feeds',
                           style: TextStyle(
@@ -120,6 +120,7 @@ class _FeedsState extends State<Feeds> {
                           ),
                         ),
                       );
+                    }
                   },
                 ),
               ),

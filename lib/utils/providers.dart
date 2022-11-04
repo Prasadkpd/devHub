@@ -5,7 +5,7 @@ import 'package:devhub/view_models/auth/login_view_model.dart';
 import 'package:devhub/view_models/auth/register_view_model.dart';
 import 'package:devhub/view_models/conversation/conversation_view_model.dart';
 import 'package:devhub/view_models/profile/edit_profile_view_model.dart';
-import 'package:devhub/view_models/status/status_view_model.dart';
+// import 'package:devhub/view_models/status/status_view_model.dart';
 import 'package:devhub/view_models/theme/theme_view_model.dart';
 import 'package:devhub/view_models/user/user_view_model.dart';
 import 'package:devhub/utils/constants.dart';
@@ -16,7 +16,7 @@ List<SingleChildWidget> providers = [
   ChangeNotifierProvider(create: (_) => PostsViewModel()),
   ChangeNotifierProvider(create: (_) => EditProfileViewModel()),
   ChangeNotifierProvider(create: (_) => ConversationViewModel()),
-  ChangeNotifierProvider(create: (_) => StatusViewModel()),
+  // ChangeNotifierProvider(create: (_) => StatusViewModel()),
   ChangeNotifierProvider(create: (_) => UserViewModel()),
   ChangeNotifierProvider(create: (_) => ThemeProvider()),
 ];

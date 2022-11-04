@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devhub/screens/mainscreen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_overlay/loading_overlay.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +10,10 @@ import 'package:devhub/view_models/auth/posts_view_model.dart';
 import 'package:devhub/widgets/indeicators.dart';
 
 class CreatePost extends StatefulWidget {
+  const CreatePost({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _CreatePostState createState() => _CreatePostState();
 }
 
@@ -35,10 +37,10 @@ class _CreatePostState extends State<CreatePost> {
           key: viewModel.scaffoldKey,
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.highlight_off_outlined),
+              icon: const Icon(Icons.highlight_off_outlined),
               onPressed: () {
                 viewModel.resetPost();
-                  Navigator.of(context).pushReplacement(
+                Navigator.of(context).pushReplacement(
                   MaterialPageRoute(
                     builder: (_) => TabScreen(),
                   ),
@@ -51,7 +53,12 @@ class _CreatePostState extends State<CreatePost> {
               GestureDetector(
                 onTap: () async {
                   await viewModel.uploadPosts(context);
-                  Navigator.pop(context);
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: (_) => TabScreen(),
+                    ),
+                  );
                   viewModel.resetPost();
                 },
                 child: Padding(
@@ -69,9 +76,9 @@ class _CreatePostState extends State<CreatePost> {
             ],
           ),
           body: ListView(
-            padding: EdgeInsets.symmetric(horizontal: 15.0),
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
             children: [
-              SizedBox(height: 15.0),
+              const SizedBox(height: 15.0),
               StreamBuilder(
                 stream: usersRef.doc(currentUserId()).snapshots(),
                 builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
@@ -86,7 +93,7 @@ class _CreatePostState extends State<CreatePost> {
                       ),
                       title: Text(
                         user.username!,
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                       subtitle: Text(
                         user.email!,
@@ -103,7 +110,7 @@ class _CreatePostState extends State<CreatePost> {
                   height: MediaQuery.of(context).size.width - 30,
                   decoration: BoxDecoration(
                     color: Colors.grey[300],
-                    borderRadius: BorderRadius.all(
+                    borderRadius: const BorderRadius.all(
                       Radius.circular(5.0),
                     ),
                     border: Border.all(
@@ -135,55 +142,50 @@ class _CreatePostState extends State<CreatePost> {
                             ),
                 ),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Text(
                 'Caption Or Question'.toUpperCase(),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               TextFormField(
                 initialValue: viewModel.description,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Eg. Enter the question or error here',
                   focusedBorder: UnderlineInputBorder(),
                 ),
                 maxLines: null,
                 onChanged: (val) => viewModel.setDescription(val),
               ),
-              SizedBox(height: 20.0),
+              const SizedBox(height: 20.0),
               Text(
                 'Programming Language'.toUpperCase(),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               ListTile(
-                contentPadding: EdgeInsets.all(0.0),
-                title: Container(
+                contentPadding: const EdgeInsets.all(0.0),
+                title: SizedBox(
                   width: 250.0,
                   child: TextFormField(
                     controller: viewModel.locationTEC,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       contentPadding: EdgeInsets.all(0.0),
-                      hintText: 'United States,Los Angeles!',
+                      hintText: 'Programming Language here',
                       focusedBorder: UnderlineInputBorder(),
                     ),
                     maxLines: null,
-                    onChanged: (val) => viewModel.setLocation(val),
+                    onChanged: (val) => viewModel.setLanguage(val),
                   ),
                 ),
-                trailing: IconButton(
-                  tooltip: "Use your current location",
-                  icon: Icon(
-                    Icons.code_off_rounded,
-                    size: 25.0,
-                  ),
-                  iconSize: 30.0,
+                trailing: Icon(
+                  Icons.code_off_rounded,
+                  size: 30.0,
                   color: Theme.of(context).colorScheme.secondary,
-                  onPressed: () => viewModel.getLocation(),
                 ),
               ),
             ],
@@ -205,9 +207,9 @@ class _CreatePostState extends State<CreatePost> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: 20.0),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              const SizedBox(height: 20.0),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 10.0),
                 child: Text(
                   'Select Image',
                   style: TextStyle(
@@ -215,18 +217,18 @@ class _CreatePostState extends State<CreatePost> {
                   ),
                 ),
               ),
-              Divider(),
+              const Divider(),
               ListTile(
-                leading: Icon(Icons.camera_alt_outlined),
-                title: Text('Camera'),
+                leading: const Icon(Icons.camera_alt_outlined),
+                title: const Text('Camera'),
                 onTap: () {
                   Navigator.pop(context);
                   viewModel.pickImage(camera: true, context: context);
                 },
               ),
               ListTile(
-                leading: Icon(Icons.image_outlined),
-                title: Text('Gallery'),
+                leading: const Icon(Icons.image_outlined),
+                title: const Text('Gallery'),
                 onTap: () {
                   Navigator.pop(context);
                   viewModel.pickImage(context: context);

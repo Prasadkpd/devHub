@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text('Don\'t have an account?'),
-                SizedBox(width: 5.0),
+                const SizedBox(width: 5.0),
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushReplacement(
@@ -84,12 +84,12 @@ class _LoginState extends State<Login> {
               ],
             ),
           ],
-        ),   
         ),
-      );
+      ),
+    );
   }
 
-   buildForm(BuildContext context, LoginViewModel viewModel) {
+  buildForm(BuildContext context, LoginViewModel viewModel) {
     return Form(
       key: viewModel.formKey,
       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -125,13 +125,13 @@ class _LoginState extends State<Login> {
           Align(
             alignment: Alignment.centerRight,
             child: Padding(
-              padding: EdgeInsets.only(right: 10.0),
+              padding: const EdgeInsets.only(right: 10.0),
               child: InkWell(
                 onTap: () => viewModel.forgotPassword(context),
-                child: Container(
+                child: const SizedBox(
                   width: 130,
                   height: 40,
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.centerRight,
                     child: Text(
                       'Forgot Password?',

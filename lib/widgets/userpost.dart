@@ -52,7 +52,7 @@ class UserPost extends StatelessWidget {
               buildUser(context),
               Column(
                 children: [
-                  SizedBox(height:8.0),
+                  SizedBox(height: 20.0),
                   ClipRRect(
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(10.0),
@@ -65,34 +65,61 @@ class UserPost extends StatelessWidget {
                       width: double.infinity,
                     ),
                   ),
-                  Container(
-                    // padding: const EdgeInsets.only(top: 40.0),
-                    child: Row(
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Visibility(
-                          visible: post!.description != null &&
-                              post!.description.toString().isNotEmpty,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 5.0, top: 3.0, bottom: 3.0),
-                            child: Text(
-                              '${post?.description ?? ""}',
-                              style: TextStyle(
-                                color:
-                                    Theme.of(context).textTheme.caption!.color,
-                                fontSize: 17.0,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Visibility(
+                            visible: post!.description != null &&
+                                post!.description.toString().isNotEmpty,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 5.0, top: 3.0, bottom: 3.0),
+                              child: Text(
+                                post?.description ?? "",
+                                style: TextStyle(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption!
+                                      .color,
+                                  fontSize: 17.0,
+                                ),
+                                // maxLines: 2,
                               ),
-                              // maxLines: 2,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Visibility(
+                            visible: post!.description != null &&
+                                post!.description.toString().isNotEmpty,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 5.0, top: 3.0, bottom: 3.0),
+                              child: Text(
+                                '#${post?.langugae}',
+                                style: TextStyle(
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .caption!
+                                      .color,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 14.0,
+                                ),
+                                // maxLines: 2,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                   Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 3.0, vertical: 5.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 3.0, vertical: 5.0),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,7 +139,7 @@ class UserPost extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                child: Icon(
+                                child: const Icon(
                                   Icons.source,
                                   size: 25.0,
                                 ),
@@ -146,7 +173,7 @@ class UserPost extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 5.0),
+                            const SizedBox(width: 5.0),
                             StreamBuilder(
                               stream: commentRef
                                   .doc(post!.postId!)
@@ -166,12 +193,12 @@ class UserPost extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 3.0),
+                        const SizedBox(height: 3.0),
                         Padding(
                           padding: const EdgeInsets.all(3.0),
                           child: Text(
                             timeago.format(post!.timestamp!.toDate()),
-                            style: TextStyle(fontSize: 10.0),
+                            style: const TextStyle(fontSize: 10.0),
                           ),
                         ),
                         // SizedBox(height: 5.0),
@@ -217,9 +244,9 @@ class UserPost extends StatelessWidget {
           return LikeButton(
             onTap: onLikeButtonTapped,
             size: 28.0,
-            circleColor: CircleColor(
+            circleColor: const CircleColor(
                 start: Color(0xffFFC0CB), end: Color.fromARGB(255, 0, 13, 255)),
-            bubblesColor: BubblesColor(
+            bubblesColor: const BubblesColor(
                 dotPrimaryColor: Color.fromARGB(255, 110, 116, 219),
                 dotSecondaryColor: Color.fromARGB(255, 72, 44, 42),
                 dotThirdColor: Color.fromARGB(255, 153, 135, 144),
@@ -231,7 +258,7 @@ class UserPost extends StatelessWidget {
                     ? Theme.of(context).brightness == Brightness.dark
                         ? Colors.white
                         : Colors.black
-                    : Color.fromARGB(255, 10, 38, 246),
+                    : const Color.fromARGB(255, 10, 38, 246),
                 size: 25,
               );
             },
@@ -265,7 +292,7 @@ class UserPost extends StatelessWidget {
       padding: const EdgeInsets.only(left: 7.0),
       child: Text(
         '$count supports',
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 10.0,
         ),
@@ -278,7 +305,7 @@ class UserPost extends StatelessWidget {
       padding: const EdgeInsets.only(top: 0.5),
       child: Text(
         '-   $count comments',
-        style: TextStyle(fontSize: 8.5, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 8.5, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -298,7 +325,7 @@ class UserPost extends StatelessWidget {
               alignment: Alignment.topCenter,
               child: Container(
                 height: 50.0,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white60,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(10.0),
@@ -320,8 +347,8 @@ class UserPost extends StatelessWidget {
                                       Theme.of(context).colorScheme.secondary,
                                   child: Center(
                                     child: Text(
-                                      '${user.username![0].toUpperCase()}',
-                                      style: TextStyle(
+                                      user.username![0].toUpperCase(),
+                                      style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 15.0,
                                         fontWeight: FontWeight.w900,
@@ -341,16 +368,16 @@ class UserPost extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${post?.username ?? ""}',
-                                style: TextStyle(
+                                post?.username ?? "",
+                                style: const TextStyle(
                                   fontWeight: FontWeight.w900,
                                   color: Colors.black,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                               ),
                               Text(
-                                '${post?.location ?? 'Wooble'}',
-                                style: TextStyle(
+                                '${post?.username?.toLowerCase().replaceAll(' ', '')}@devhub',
+                                style: const TextStyle(
                                   fontSize: 10.0,
                                   color: Color(0xff4D4D4D),
                                 ),

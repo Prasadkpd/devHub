@@ -5,7 +5,7 @@ class PostModel {
   String? postId;
   String? ownerId;
   String? username;
-  String? location;
+  String? langugae;
   String? description;
   String? mediaUrl;
   Timestamp? timestamp;
@@ -15,7 +15,7 @@ class PostModel {
     this.id,
     this.postId,
     this.ownerId,
-    this.location,
+    this.langugae,
     this.description,
     this.mediaUrl,
     this.username,
@@ -25,7 +25,7 @@ class PostModel {
     id = json['id'];
     postId = json['postId'];
     ownerId = json['ownerId'];
-    location = json['location'];
+    langugae = json['langugae'];
     username= json['username'];
     description = json['description'];
     mediaUrl = json['mediaUrl'];
@@ -37,7 +37,7 @@ class PostModel {
     data['id'] = this.id;
     data['postId'] = this.postId;
     data['ownerId'] = this.ownerId;
-    data['location'] = this.location;
+    data['langugae'] = this.langugae;
     data['description'] = this.description;
     data['mediaUrl'] = this.mediaUrl;
 
