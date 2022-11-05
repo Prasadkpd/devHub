@@ -6,7 +6,10 @@ import 'package:devhub/utils/firebase.dart';
 import 'package:devhub/widgets/notification_items.dart';
 
 class Activities extends StatefulWidget {
+  const Activities({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _ActivitiesState createState() => _ActivitiesState();
 }
 
@@ -20,7 +23,7 @@ class _ActivitiesState extends State<Activities> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Notifications'),
+        title: const Text('Notifications'),
         centerTitle: true,
         actions: [
           Padding(
@@ -57,7 +60,7 @@ class _ActivitiesState extends State<Activities> {
           .orderBy('timestamp', descending: true)
           .limit(20)
           .snapshots(),
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (_, DocumentSnapshot snapshot) {
         ActivityModel activities =
             ActivityModel.fromJson(snapshot.data() as Map<String, dynamic>);
@@ -74,12 +77,10 @@ class _ActivitiesState extends State<Activities> {
         .doc(firebaseAuth.currentUser!.uid)
         .collection('notifications')
         .get();
-    notificationsSnap.docs.forEach(
-      (doc) {
-        if (doc.exists) {
-          doc.reference.delete();
-        }
-      },
-    );
+    for (var doc in notificationsSnap.docs) {
+      if (doc.exists) {
+        doc.reference.delete();
+      }
+    }
   }
 }

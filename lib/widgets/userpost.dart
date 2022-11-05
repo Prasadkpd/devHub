@@ -52,9 +52,9 @@ class UserPost extends StatelessWidget {
               buildUser(context),
               Column(
                 children: [
-                  SizedBox(height: 20.0),
+                  const SizedBox(height: 20.0),
                   ClipRRect(
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(10.0),
                       topRight: Radius.circular(10.0),
                     ),
@@ -129,7 +129,7 @@ class UserPost extends StatelessWidget {
                           child: Row(
                             children: [
                               buildLikeButton(),
-                              SizedBox(width: 0.0),
+                              const SizedBox(width: 0.0),
                               InkWell(
                                 borderRadius: BorderRadius.circular(10.0),
                                 onTap: () {
@@ -147,7 +147,7 @@ class UserPost extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 5.0),
+                        const SizedBox(height: 5.0),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -362,7 +362,7 @@ class UserPost extends StatelessWidget {
                                     '${user.photoUrl}',
                                   ),
                                 ),
-                          SizedBox(width: 5.0),
+                          const SizedBox(width: 5.0),
                           Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,

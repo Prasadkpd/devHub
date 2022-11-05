@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:like_button/like_button.dart';
 import 'package:devhub/models/post.dart';
@@ -47,19 +46,19 @@ class _ViewImageState extends State<ViewImage> {
                   children: [
                     Text(
                       widget.post!.username!,
-                      style: TextStyle(fontWeight: FontWeight.w800),
+                      style: const TextStyle(fontWeight: FontWeight.w800),
                     ),
-                    SizedBox(height: 3.0),
+                    const SizedBox(height: 3.0),
                     Row(
                       children: [
-                        Icon(Icons.access_alarm_outlined, size: 13.0),
-                        SizedBox(width: 3.0),
+                        const Icon(Icons.access_alarm_outlined, size: 13.0),
+                        const SizedBox(width: 3.0),
                         Text(timeago.format(widget.post!.timestamp!.toDate())),
                       ],
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
                 buildLikeButton(),
               ]),
             ),
@@ -78,7 +77,7 @@ class _ViewImageState extends State<ViewImage> {
             return circularProgress(context);
           },
           errorWidget: (context, url, error) {
-            return Icon(Icons.error);
+            return const Icon(Icons.error);
           },
           height: MediaQuery.of(context).size.height,
           fit: BoxFit.contain,
@@ -179,9 +178,9 @@ class _ViewImageState extends State<ViewImage> {
           return LikeButton(
             onTap: onLikeButtonTapped,
             size: 25.0,
-            circleColor:
-                CircleColor(start: Color(0xffFFC0CB), end: Color(0xffff0000)),
-            bubblesColor: BubblesColor(
+            circleColor: const CircleColor(
+                start: Color(0xffFFC0CB), end: Color(0xffff0000)),
+            bubblesColor: const BubblesColor(
               dotPrimaryColor: Color(0xffFFA500),
               dotSecondaryColor: Color(0xffd8392b),
               dotThirdColor: Color(0xffFF69B4),
@@ -189,7 +188,9 @@ class _ViewImageState extends State<ViewImage> {
             ),
             likeBuilder: (bool isLiked) {
               return Icon(
-                docs.isEmpty ? Icons.favorite_border_outlined : Icons.favorite_outlined,
+                docs.isEmpty
+                    ? Icons.favorite_border_outlined
+                    : Icons.favorite_outlined,
                 color: docs.isEmpty ? Colors.grey : Colors.red,
                 size: 25,
               );

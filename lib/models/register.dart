@@ -1,4 +1,3 @@
-
 class Register {
   String? username;
   String? email;
@@ -9,14 +8,14 @@ class Register {
   bool publicEmail = false;
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['name'] = this.username;
-    data['email'] = this.email;
-    data['gender'] = this.gender;
-    data['password'] = this.password;
-    data['password_confirmation'] = this.passwordConfirmation;
-    data['public_email'] = this.publicEmail;
-    data['email'] = this.email;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['name'] = username;
+    data['email'] = email;
+    data['gender'] = gender;
+    data['password'] = password;
+    data['password_confirmation'] = passwordConfirmation;
+    data['public_email'] = publicEmail;
+    data['email'] = email;
     return data;
   }
 }

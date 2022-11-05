@@ -19,7 +19,7 @@ class _TabScreenState extends State<TabScreen> {
     {
       'title': 'Home',
       'icon': Icons.home,
-      'page': Feeds(),
+      'page': const Feeds(),
       'index': 0,
     },
     {
@@ -31,13 +31,13 @@ class _TabScreenState extends State<TabScreen> {
     {
       'title': '',
       'icon': Icons.add_circle,
-      'page': CreatePost(),
+      'page': const CreatePost(),
       'index': 2,
     },
     {
       'title': 'Notification',
       'icon': Icons.notifications_active,
-      'page': Activities(),
+      'page': const Activities(),
       'index': 3,
     },
     {
@@ -71,7 +71,7 @@ class _TabScreenState extends State<TabScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
             for (Map item in pages)
               item['index'] == 2
                   ? Padding(
@@ -104,7 +104,7 @@ class _TabScreenState extends State<TabScreen> {
                         onPressed: () => navigationTapped(item['index']),
                       ),
                     ),
-            SizedBox(width: 5),
+            const SizedBox(width: 5),
           ],
         ),
       ),

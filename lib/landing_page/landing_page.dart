@@ -13,7 +13,7 @@ class _LandingState extends State<Landing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -24,20 +24,19 @@ class _LandingState extends State<Landing> {
               child: Padding(
                 padding: const EdgeInsets.only(left: 10.0),
                 child: Image.asset('assets/images/new1.png',
-                    height: 270.0, 
-                    width: 270.0, 
-                    fit: BoxFit.cover),
+                    height: 270.0, width: 270.0, fit: BoxFit.cover),
               ),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-              child: Text("Platform for Developers to Discuss there problems.",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 22.0,
-                fontWeight: FontWeight.w300,
-                // fontFamily: 'sans-serif',  
-              ),
+              child: Text(
+                "Platform for Developers to Discuss there problems.",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 22.0,
+                  fontWeight: FontWeight.w300,
+                  // fontFamily: 'sans-serif',
+                ),
               ),
             ),
             Column(
@@ -52,7 +51,7 @@ class _LandingState extends State<Landing> {
                     );
                   },
                   child: Container(
-                    margin: const EdgeInsets.only(top:25.0, bottom: 15.0),
+                    margin: const EdgeInsets.only(top: 25.0, bottom: 15.0),
                     height: 45.0,
                     width: 250.0,
                     decoration: BoxDecoration(
@@ -90,10 +89,10 @@ class _LandingState extends State<Landing> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text('Don\'t have an account?'),
-                      SizedBox(width: 5.0),
+                      const SizedBox(width: 5.0),
                       GestureDetector(
                         onTap: () {
-                           Navigator.of(context).pushReplacement(
+                          Navigator.of(context).pushReplacement(
                             MaterialPageRoute(
                               builder: (_) => const Register(),
                             ),

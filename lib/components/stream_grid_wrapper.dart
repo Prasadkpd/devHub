@@ -32,16 +32,14 @@ class StreamGridWrapper extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           var list = snapshot.data!.docs.toList();
-          return list.length == 0
-              ? Container(
-                  child: Center(
-                    child: Text('No Posts'),
-                  ),
+          return list.isEmpty
+              ? const Center(
+                  child: Text('No Posts'),
                 )
               : GridView.builder(
                   padding: padding,
                   scrollDirection: scrollDirection,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     childAspectRatio: 3 / 3,
                   ),

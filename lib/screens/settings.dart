@@ -17,21 +17,21 @@ class _SettingState extends State<Setting> {
           onTap: () {
             Navigator.pop(context);
           },
-          child: Icon(Icons.keyboard_backspace),
+          child: const Icon(Icons.keyboard_backspace),
         ),
         backgroundColor: Theme.of(context).backgroundColor,
         elevation: 0.0,
-        title: Text(
+        title: const Text(
           "Settings",
           style: TextStyle(),
         ),
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: <Widget>[
-            ListTile(
+            const ListTile(
                 title: Text(
                   "About",
                   style: TextStyle(
@@ -42,15 +42,15 @@ class _SettingState extends State<Setting> {
                   "A Fully Functional Application for devlopers to get the Solution for there questions and errors.",
                 ),
                 trailing: Icon(Icons.error)),
-            Divider(),
+            const Divider(),
             ListTile(
-              title: Text(
+              title: const Text(
                 "Dark Mode",
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                 ),
               ),
-              subtitle: Text("Use the dark mode"),
+              subtitle: const Text("Use the dark mode"),
               trailing: Consumer<ThemeProvider>(
                 builder: (context, notifier, child) => CupertinoSwitch(
                   onChanged: (val) {

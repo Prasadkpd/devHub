@@ -7,7 +7,7 @@ Widget cachedNetworkImage(String imgUrl) {
     imageUrl: imgUrl,
     fit: BoxFit.contain,
     placeholder: (context, url) => circularProgress(context),
-    errorWidget: (context, url, error) => Center(
+    errorWidget: (context, url, error) => const Center(
       child: Text(
         'Unable to load Image',
         style: TextStyle(fontSize: 10.0),

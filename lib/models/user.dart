@@ -10,16 +10,16 @@ class UserModel {
   Timestamp? lastSeen;
   bool? isOnline;
 
-  UserModel(
-      {this.username,
-      this.email,
-      this.id,
-      this.photoUrl,
-      this.signedUpAt,
-      this.isOnline,
-      this.lastSeen,
-      this.role,
-      });
+  UserModel({
+    this.username,
+    this.email,
+    this.id,
+    this.photoUrl,
+    this.signedUpAt,
+    this.isOnline,
+    this.lastSeen,
+    this.role,
+  });
 
   UserModel.fromJson(Map<String, dynamic> json) {
     username = json['username'];
@@ -33,15 +33,15 @@ class UserModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['username'] = this.username;
-    data['role'] = this.role;
-    data['email'] = this.email;
-    data['photoUrl'] = this.photoUrl;
-    data['signedUpAt'] = this.signedUpAt;
-    data['isOnline'] = this.isOnline;
-    data['lastSeen'] = this.lastSeen;
-    data['id'] = this.id;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['username'] = username;
+    data['role'] = role;
+    data['email'] = email;
+    data['photoUrl'] = photoUrl;
+    data['signedUpAt'] = signedUpAt;
+    data['isOnline'] = isOnline;
+    data['lastSeen'] = lastSeen;
+    data['id'] = id;
 
     return data;
   }

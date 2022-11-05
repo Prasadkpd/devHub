@@ -10,6 +10,7 @@ class Feeds extends StatefulWidget {
   const Feeds({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _FeedsState createState() => _FeedsState();
 }
 
@@ -36,14 +37,13 @@ class _FeedsState extends State<Feeds> {
 
   @override
   Widget build(BuildContext context) {
-    print('>>>');
     return Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: Text(
           Constants.appName,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w900,
           ),
         ),
@@ -55,7 +55,7 @@ class _FeedsState extends State<Feeds> {
             postRef.orderBy('timestamp', descending: true).limit(page).get(),
         child: SingleChildScrollView(
           // controller: scrollController,
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -64,7 +64,7 @@ class _FeedsState extends State<Feeds> {
               Container(
                 // color: Colors.red,
                 height: MediaQuery.of(context).size.height,
-                padding: EdgeInsets.only(bottom: 100.0),
+                padding: const EdgeInsets.only(bottom: 100.0),
                 child: FutureBuilder(
                   future: postRef
                       .orderBy('timestamp', descending: true)

@@ -22,7 +22,7 @@ class _PostTileState extends State<PostTile> {
           builder: (_) => ViewImage(post: widget.post),
         ));
       },
-      child: Container(
+      child: SizedBox(
         height: 100,
         width: 150,
         child: Card(
@@ -31,7 +31,7 @@ class _PostTileState extends State<PostTile> {
           ),
           elevation: 5,
           child: ClipRRect(
-            borderRadius: BorderRadius.all(
+            borderRadius: const BorderRadius.all(
               Radius.circular(3.0),
             ),
             child: cachedNetworkImage(widget.post!.mediaUrl!),

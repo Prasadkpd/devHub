@@ -28,17 +28,15 @@ class CommentsStreamWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-     stream: stream,
+      stream: stream,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           var list = snapshot.data!.docs.toList();
-          return list.length == 0
-              ? Container(
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20.0),
-                      child: Text('No comments'),
-                    ),
+          return list.isEmpty
+              ? const Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 20.0),
+                    child: Text('No comments'),
                   ),
                 )
               : ListView.builder(

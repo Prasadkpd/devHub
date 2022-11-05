@@ -2,9 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:devhub/auth/login/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:devhub/auth/register/register.dart';
 import 'package:devhub/components/stream_grid_wrapper.dart';
 import 'package:devhub/models/post.dart';
 import 'package:devhub/models/user.dart';
@@ -15,11 +13,13 @@ import 'package:devhub/utils/firebase.dart';
 import 'package:devhub/widgets/post_tiles.dart';
 
 class Profile extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final profileId;
 
   Profile({this.profileId});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProfileState createState() => _ProfileState();
 }
 
@@ -60,7 +60,7 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('DEVHUB'),
+        title: const Text('DEVHUB'),
         actions: [
           widget.profileId == firebaseAuth.currentUser!.uid
               ? Center(
@@ -71,11 +71,11 @@ class _ProfileState extends State<Profile> {
                         await firebaseAuth.signOut();
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (_) => Login(),
+                            builder: (_) => const Login(),
                           ),
                         );
                       },
-                      child: Text(
+                      child: const Text(
                         'Log Out',
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
@@ -85,7 +85,7 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
                 )
-              : SizedBox()
+              : const SizedBox()
         ],
       ),
       body: CustomScrollView(
@@ -123,7 +123,7 @@ class _ProfileState extends State<Profile> {
                                       child: Center(
                                         child: Text(
                                           '${user.username![0].toUpperCase()}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             color: Colors.white,
                                             fontSize: 15.0,
                                             fontWeight: FontWeight.w900,
@@ -139,14 +139,14 @@ class _ProfileState extends State<Profile> {
                                       ),
                                     ),
                             ),
-                            SizedBox(width: 20.0),
+                            const SizedBox(width: 20.0),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: 15.0),
+                                const SizedBox(height: 15.0),
                                 Row(
                                   children: [
-                                    Visibility(
+                                    const Visibility(
                                       visible: false,
                                       child: SizedBox(width: 10.0),
                                     ),
@@ -154,22 +154,22 @@ class _ProfileState extends State<Profile> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 130.0,
                                           child: Text(
                                             user.username!,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 15.0,
                                               fontWeight: FontWeight.w900,
                                             ),
                                             maxLines: null,
                                           ),
                                         ),
-                                        Container(
+                                        SizedBox(
                                           width: 130.0,
                                           child: Text(
                                             user.role!,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               fontSize: 12.0,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -177,7 +177,7 @@ class _ProfileState extends State<Profile> {
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
-                                        SizedBox(width: 10.0),
+                                        const SizedBox(width: 10.0),
                                         Column(
                                           mainAxisSize: MainAxisSize.min,
                                           crossAxisAlignment:
@@ -185,7 +185,7 @@ class _ProfileState extends State<Profile> {
                                           children: [
                                             Text(
                                               user.email!,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 10.0,
                                               ),
                                             ),
@@ -196,7 +196,8 @@ class _ProfileState extends State<Profile> {
                                     widget.profileId == currentUserId()
                                         ? Container(
                                             // color: Colors.red,
-                                            margin: EdgeInsets.only(left: 40.0),
+                                            margin: const EdgeInsets.only(
+                                                left: 40.0),
                                             child: InkWell(
                                               onTap: () {
                                                 Navigator.of(context).push(
@@ -214,7 +215,7 @@ class _ProfileState extends State<Profile> {
                                                         .colorScheme
                                                         .secondary,
                                                   ),
-                                                  Text(
+                                                  const Text(
                                                     'settings',
                                                     style: TextStyle(
                                                       fontSize: 11.5,
@@ -232,8 +233,8 @@ class _ProfileState extends State<Profile> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 10.0),
-                        Container(
+                        const SizedBox(height: 10.0),
+                        SizedBox(
                           height: 50.0,
                           child: Padding(
                             padding:
@@ -334,7 +335,7 @@ class _ProfileState extends State<Profile> {
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Row(
                         children: [
-                          Text(
+                          const Text(
                             'All Posts',
                             style: TextStyle(fontWeight: FontWeight.w900),
                           ),
@@ -348,7 +349,7 @@ class _ProfileState extends State<Profile> {
                               );
                               Navigator.push(
                                 context,
-                                CupertinoPageRoute(
+                                MaterialPageRoute(
                                   builder: (_) => ListPosts(
                                     userId: widget.profileId,
                                     username: currentUser.username,
@@ -356,7 +357,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                               );
                             },
-                            icon: Icon(Icons.grid_3x3_outlined),
+                            icon: const Icon(Icons.grid_3x3_outlined),
                           )
                         ],
                       ),
@@ -377,16 +378,16 @@ class _ProfileState extends State<Profile> {
       children: <Widget>[
         Text(
           count.toString(),
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16.0,
             fontWeight: FontWeight.w900,
             fontFamily: 'Ubuntu-Regular',
           ),
         ),
-        SizedBox(height: 3.0),
+        const SizedBox(height: 3.0),
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 15,
             fontWeight: FontWeight.w400,
             fontFamily: 'Ubuntu-Regular',
@@ -404,7 +405,7 @@ class _ProfileState extends State<Profile> {
           text: "Edit Profile",
           function: () {
             Navigator.of(context).push(
-              CupertinoPageRoute(
+              MaterialPageRoute(
                 builder: (_) => EditProfile(
                   user: user,
                 ),
@@ -440,14 +441,14 @@ class _ProfileState extends State<Profile> {
               end: Alignment.bottomLeft,
               colors: [
                 Theme.of(context).colorScheme.secondary,
-                Color(0xff597FDB),
+                const Color(0xff597FDB),
               ],
             ),
           ),
           child: Center(
             child: Text(
               text!,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
@@ -541,7 +542,7 @@ class _ProfileState extends State<Profile> {
           .where('ownerId', isEqualTo: widget.profileId)
           .orderBy('timestamp', descending: true)
           .snapshots(),
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (_, DocumentSnapshot snapshot) {
         PostModel posts =
             PostModel.fromJson(snapshot.data() as Map<String, dynamic>);
@@ -586,11 +587,11 @@ class _ProfileState extends State<Profile> {
                 shape: BoxShape.circle,
               ),
               child: Padding(
-                padding: EdgeInsets.all(3.0),
+                padding: const EdgeInsets.all(3.0),
                 child: Icon(
                   docs.isEmpty
-                      ? CupertinoIcons.heart
-                      : CupertinoIcons.heart_fill,
+                      ? Icons.code_outlined
+                      : Icons.code_off_outlined,
                   color: Colors.red,
                 ),
               ),

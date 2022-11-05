@@ -24,19 +24,19 @@ class _ListPostsState extends State<ListPosts> {
       appBar: AppBar(
         leading: InkWell(
           onTap: () => Navigator.pop(context),
-          child: Icon(Icons.chevron_left_outlined),
+          child: const Icon(Icons.chevron_left_outlined),
         ),
         title: Column(
           children: [
             Text(
               widget.username.toUpperCase(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 12.0,
                 fontWeight: FontWeight.w600,
                 color: Colors.grey,
               ),
             ),
-            Text(
+            const Text(
               'Posts',
               style: TextStyle(
                 fontSize: 18.0,
@@ -72,8 +72,8 @@ class _ListPostsState extends State<ListPosts> {
               );
             } else if (snapshot.connectionState == ConnectionState.waiting) {
               return circularProgress(context);
-            } else
-              return Center(
+            } else {
+              return const Center(
                 child: Text(
                   'No Feeds',
                   style: TextStyle(
@@ -82,6 +82,7 @@ class _ListPostsState extends State<ListPosts> {
                   ),
                 ),
               );
+            }
           },
         ),
       ),

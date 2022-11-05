@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_bubbles/chat_bubbles.dart';
 import 'package:devhub/components/text_time.dart';
 import 'package:devhub/models/enum/message_type.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -12,7 +11,8 @@ class ChatBubbleWidget extends StatefulWidget {
   final Timestamp? time;
   final bool? isMe;
 
-  ChatBubbleWidget({
+  const ChatBubbleWidget({
+    super.key,
     @required this.message,
     @required this.time,
     @required this.isMe,
@@ -20,6 +20,7 @@ class ChatBubbleWidget extends StatefulWidget {
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _ChatBubbleWidgetState createState() => _ChatBubbleWidgetState();
 }
 
@@ -38,9 +39,9 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
 
   Color? chatBubbleReplyColor() {
     if (Theme.of(context).brightness == Brightness.dark) {
-      return Color.fromARGB(255, 92, 92, 92);
+      return const Color.fromARGB(255, 92, 92, 92);
     } else {
-      return Color.fromARGB(255, 193, 192, 192);
+      return const Color.fromARGB(255, 193, 192, 192);
     }
   }
 
@@ -60,10 +61,9 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
             bottomRight: Radius.circular(20.0),
           );
     return Container(
-
       // color: Colors.red,
       width: double.minPositive,
-      
+
       child: Column(
         crossAxisAlignment: align,
         // mainAxisSize: MainAxisSize.min,
@@ -71,7 +71,7 @@ class _ChatBubbleWidgetState extends State<ChatBubbleWidget> {
           Container(
             decoration: BoxDecoration(
               borderRadius: radius,
-              color: widget.isMe! ?chatBubbleColor() : chatBubbleReplyColor(),
+              color: widget.isMe! ? chatBubbleColor() : chatBubbleReplyColor(),
             ),
             // elevation: 0.0,
             margin: const EdgeInsets.all(3.0),

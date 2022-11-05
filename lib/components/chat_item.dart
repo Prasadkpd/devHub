@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:devhub/chats/conversation.dart';
 import 'package:devhub/components/text_time.dart';
@@ -18,7 +17,7 @@ class ChatItem extends StatelessWidget {
   final MessageType? type;
   final String? currentUserId;
 
-  ChatItem({
+  const ChatItem({
     Key? key,
     @required this.userId,
     @required this.time,
@@ -42,7 +41,7 @@ class ChatItem extends StatelessWidget {
           );
           return ListTile(
             contentPadding:
-                EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
+                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
             leading: Stack(
               children: <Widget>[
                 user.photoUrl!.isEmpty
@@ -52,8 +51,8 @@ class ChatItem extends StatelessWidget {
                             Theme.of(context).colorScheme.secondary,
                         child: Center(
                           child: Text(
-                            '${user.username![0].toUpperCase()}',
-                            style: TextStyle(
+                            user.username![0].toUpperCase(),
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 15.0,
                               fontWeight: FontWeight.w900,
@@ -81,7 +80,7 @@ class ChatItem extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           color: user.isOnline ?? false
-                              ? Color(0xff00d72f)
+                              ? const Color(0xff00d72f)
                               : Colors.grey,
                           borderRadius: BorderRadius.circular(6),
                         ),
@@ -96,7 +95,7 @@ class ChatItem extends StatelessWidget {
             title: Text(
               '${user.username}',
               maxLines: 1,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -108,23 +107,23 @@ class ChatItem extends StatelessWidget {
             trailing: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: <Widget>[
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 TextTime(
                   child: Text(
-                    "${timeago.format(time!.toDate())}",
-                    style: TextStyle(
+                    timeago.format(time!.toDate()),
+                    style: const TextStyle(
                       fontWeight: FontWeight.w300,
                       fontSize: 11,
                     ),
                   ),
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 buildCounter(context),
               ],
             ),
             onTap: () {
               Navigator.of(context, rootNavigator: true).push(
-                CupertinoPageRoute(
+                MaterialPageRoute(
                   builder: (BuildContext context) {
                     return Conversation(
                       userId: userId!,
@@ -136,7 +135,7 @@ class ChatItem extends StatelessWidget {
             },
           );
         } else {
-          return SizedBox();
+          return const SizedBox();
         }
       },
     );
@@ -153,23 +152,23 @@ class ChatItem extends StatelessWidget {
           int readCount = usersReads[currentUserId] ?? 0;
           int counter = messageCount! - readCount;
           if (counter == 0) {
-            return SizedBox();
+            return const SizedBox();
           } else {
             return Container(
-              padding: EdgeInsets.all(1),
+              padding: const EdgeInsets.all(1),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(6),
               ),
-              constraints: BoxConstraints(
+              constraints: const BoxConstraints(
                 minWidth: 11,
                 minHeight: 11,
               ),
               child: Padding(
-                padding: EdgeInsets.only(top: 1, left: 5, right: 5),
+                padding: const EdgeInsets.only(top: 1, left: 5, right: 5),
                 child: Text(
                   "$counter",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 10,
                   ),
@@ -179,7 +178,7 @@ class ChatItem extends StatelessWidget {
             );
           }
         } else {
-          return SizedBox();
+          return const SizedBox();
         }
       },
     );

@@ -23,16 +23,16 @@ class Message {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['content'] = this.content;
-    data['senderUid'] = this.senderUid;
-    data['messageId'] = this.messageId;
-    if (this.type == MessageType.TEXT) {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['content'] = content;
+    data['senderUid'] = senderUid;
+    data['messageId'] = messageId;
+    if (type == MessageType.TEXT) {
       data['type'] = 'text';
     } else {
       data['type'] = 'image';
     }
-    data['time'] = this.time;
+    data['time'] = time;
     return data;
   }
 }

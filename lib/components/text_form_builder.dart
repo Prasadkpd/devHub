@@ -1,8 +1,4 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:devhub/components/custom_card.dart';
 
 class TextFormBuilder extends StatefulWidget {
@@ -21,6 +17,7 @@ class TextFormBuilder extends StatefulWidget {
   final IconData? prefix;
   final IconData? suffix;
 
+  // ignore: use_key_in_widget_constructors
   const TextFormBuilder(
       {this.prefix,
       this.suffix,
@@ -49,76 +46,71 @@ class _TextFormBuilderState extends State<TextFormBuilder> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomCard(
-            onTap: () {
-              print("Clicked");
-            },
+            onTap: () {},
             borderRadius: BorderRadius.circular(40.0),
-            child: Container(
-              child: Theme(
-                data: ThemeData(
-                  primaryColor: Theme.of(context).colorScheme.secondary,
-                  colorScheme: ColorScheme.fromSwatch().copyWith(
-                      secondary: Theme.of(context).colorScheme.secondary),
-                ),
-                child: TextFormField(
-                  cursorColor: Theme.of(context).colorScheme.secondary,
-                  textCapitalization: TextCapitalization.none,
-                  initialValue: widget.initialValue,
-                  enabled: widget.enabled,
-                  onChanged: (value) {
-                    error = widget.validateFunction!(value);
-                    setState(() {});
-                    widget.onSaved!(value);
-                  },
-                  style: const TextStyle(fontSize: 15.0),
-                  key: widget.key,
-                  controller: widget.controller,
-                  obscureText: widget.obscureText,
-                  keyboardType: widget.textInputType,
-                  validator: widget.validateFunction,
-                  onSaved: (val) {
-                    error:
-                    widget.validateFunction!(val);
-                    setState(() {});
-                    widget.onSaved!(val!);
-                  },
-                  textInputAction: widget.textInputAction,
-                  focusNode: widget.focusNode,
-                  onFieldSubmitted: (String term) {
-                    if (widget.nextFocusNode != null) {
-                      widget.focusNode!.unfocus();
-                      FocusScope.of(context).requestFocus(widget.nextFocusNode);
-                    } else {
-                      widget.submitAction!();
-                    }
-                  },
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      widget.prefix,
-                      size: 15.0,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                    suffixIcon: Icon(
-                      widget.suffix,
-                      size: 15.0,
-                      color: Theme.of(context).colorScheme.secondary,
-                    ),
-                    filled: true,
-                    hintText: widget.hintText,
-                    hintStyle: TextStyle(
-                      color: Colors.grey[400],
-                    ),
-                    contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
-                    border: border(context),
-                    enabledBorder: border(context),
-                    focusedBorder: border(context),
-                    errorStyle: TextStyle(height: 0.0, fontSize: 0.0),
+            child: Theme(
+              data: ThemeData(
+                primaryColor: Theme.of(context).colorScheme.secondary,
+                colorScheme: ColorScheme.fromSwatch().copyWith(
+                    secondary: Theme.of(context).colorScheme.secondary),
+              ),
+              child: TextFormField(
+                cursorColor: Theme.of(context).colorScheme.secondary,
+                textCapitalization: TextCapitalization.none,
+                initialValue: widget.initialValue,
+                enabled: widget.enabled,
+                onChanged: (value) {
+                  error = widget.validateFunction!(value);
+                  setState(() {});
+                  widget.onSaved!(value);
+                },
+                style: const TextStyle(fontSize: 15.0),
+                key: widget.key,
+                controller: widget.controller,
+                obscureText: widget.obscureText,
+                keyboardType: widget.textInputType,
+                validator: widget.validateFunction,
+                onSaved: (val) {
+                  widget.validateFunction!(val);
+                  setState(() {});
+                  widget.onSaved!(val!);
+                },
+                textInputAction: widget.textInputAction,
+                focusNode: widget.focusNode,
+                onFieldSubmitted: (String term) {
+                  if (widget.nextFocusNode != null) {
+                    widget.focusNode!.unfocus();
+                    FocusScope.of(context).requestFocus(widget.nextFocusNode);
+                  } else {
+                    widget.submitAction!();
+                  }
+                },
+                decoration: InputDecoration(
+                  prefixIcon: Icon(
+                    widget.prefix,
+                    size: 15.0,
+                    color: Theme.of(context).colorScheme.secondary,
                   ),
+                  suffixIcon: Icon(
+                    widget.suffix,
+                    size: 15.0,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                  filled: true,
+                  hintText: widget.hintText,
+                  hintStyle: TextStyle(
+                    color: Colors.grey[400],
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  border: border(context),
+                  enabledBorder: border(context),
+                  focusedBorder: border(context),
+                  errorStyle: const TextStyle(height: 0.0, fontSize: 0.0),
                 ),
               ),
             ),

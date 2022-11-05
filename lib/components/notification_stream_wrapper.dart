@@ -34,9 +34,9 @@ class ActivityStreamWrapper extends StatelessWidget {
           var list = snapshot.data!.docs.toList();
           return list.length == 0
               ? Container(
-                  child: Center(
+                  child: const Center(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 250.0),
+                      padding: EdgeInsets.only(top: 250.0),
                       child: Text('No Recent Activities'),
                     ),
                   ),

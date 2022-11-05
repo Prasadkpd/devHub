@@ -74,7 +74,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
         automaticallyImplyLeading: false,
         title: Text(
           Constants.appName,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w900,
           ),
         ),
@@ -88,10 +88,10 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: buildSearch(),
             ),
-            Divider(),
+            const Divider(),
             buildUsers(),
           ],
         ),
@@ -138,7 +138,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                 border: InputBorder.none,
                 counterText: '',
                 hintText: 'Search...',
-                hintStyle: TextStyle(
+                hintStyle: const TextStyle(
                   fontSize: 13.0,
                 ),
               ),
@@ -152,7 +152,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
   buildUsers() {
     if (!loading) {
       if (filteredUsers.isEmpty) {
-        return Center(
+        return const Center(
           child: Text("No User Found",
               style: TextStyle(fontWeight: FontWeight.bold)),
         );
@@ -166,7 +166,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                 UserModel user =
                     UserModel.fromJson(doc.data() as Map<String, dynamic>);
                 if (doc.id == currentUserId()) {
-                  Timer(Duration(milliseconds: 500), () {
+                  Timer(const Duration(milliseconds: 500), () {
                     setState(() {
                       removeFromList(index);
                     });
@@ -182,7 +182,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                           child: Center(
                             child: Text(
                               user.username![0].toUpperCase(),
-                              style:const TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 15.0,
                                 fontWeight: FontWeight.w900,
@@ -198,7 +198,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                         ),
                   title: Text(
                     user.username!,
-                    style:const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     user.email!,
@@ -223,7 +223,7 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                               if (snapshot.hasData) {
                                 var snap = snapshot.data;
                                 List docs = snap!.docs;
-                                print(snapshot.data!.docs.toString());
+                                // print(snapshot.data!.docs.toString());
                                 return docs.isEmpty
                                     ? Conversation(
                                         userId: doc.id,
@@ -251,9 +251,9 @@ class _SearchState extends State<Search> with AutomaticKeepAliveClientMixin {
                         color: Theme.of(context).colorScheme.secondary,
                         borderRadius: BorderRadius.circular(3.0),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Padding(
-                          padding: const EdgeInsets.all(5.0),
+                          padding: EdgeInsets.all(5.0),
                           child: Text(
                             'Message',
                             style: TextStyle(

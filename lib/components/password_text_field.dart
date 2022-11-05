@@ -51,9 +51,7 @@ class _PasswordFormBuilderState extends State<PasswordFormBuilder> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomCard(
-            onTap: () {
-              print('clicked');
-            },
+            onTap: () {},
             borderRadius: BorderRadius.circular(40.0),
             child: Theme(
               data: ThemeData(
@@ -105,7 +103,9 @@ class _PasswordFormBuilderState extends State<PasswordFormBuilder> {
                       setState(() => obscureText = !obscureText);
                     },
                     child: Icon(
-                      obscureText ? widget.suffix : Icons.remove_red_eye_outlined,
+                      obscureText
+                          ? widget.suffix
+                          : Icons.remove_red_eye_outlined,
                       size: 15.0,
                       color: Theme.of(context).colorScheme.secondary,
                     ),

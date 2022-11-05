@@ -9,7 +9,6 @@ class PostModel {
   String? description;
   String? mediaUrl;
   Timestamp? timestamp;
-  
 
   PostModel({
     this.id,
@@ -26,23 +25,23 @@ class PostModel {
     postId = json['postId'];
     ownerId = json['ownerId'];
     langugae = json['langugae'];
-    username= json['username'];
+    username = json['username'];
     description = json['description'];
     mediaUrl = json['mediaUrl'];
     timestamp = json['timestamp'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['postId'] = this.postId;
-    data['ownerId'] = this.ownerId;
-    data['langugae'] = this.langugae;
-    data['description'] = this.description;
-    data['mediaUrl'] = this.mediaUrl;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['postId'] = postId;
+    data['ownerId'] = ownerId;
+    data['langugae'] = langugae;
+    data['description'] = description;
+    data['mediaUrl'] = mediaUrl;
 
-    data['timestamp'] = this.timestamp;
-    data['username'] = this.username;
+    data['timestamp'] = timestamp;
+    data['username'] = username;
     return data;
   }
 }
